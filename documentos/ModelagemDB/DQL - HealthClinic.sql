@@ -1,12 +1,18 @@
-
-
-SELECT
+SELECT TOP 1
 	TB_Consulta.IdConsulta,
 	TB_Consulta.DataConsulta,
 	TB_Consulta.HoraConsulta,
 	TB_Clinica.NomeFantasia,
-	TB_Usuario.NomeCompleto,
-	TB_Usuario.NomeCompleto,
+	--TB_Usuario.NomeCompleto,
+	TB_Usuario.NomeCompleto as médico,
+	(
+		SELECT U.NomeCompleto 
+		FROM TB_USUARIO AS U 
+		LEFT JOIN TB_PACIENTE AS P ON U.IdUsuario = P.IdUsuario 
+		WHERE P.IdUsuario = TB_Paciente.IdUsuario
+	
+	) as paciente,
+
 	TB_Medico.CRM,
 	TB_Prontuario.Descricao,
 	TB_Feedback.Descricao
@@ -24,16 +30,3 @@ FROM
 	TB_Prontuario ON TB_Prontuario.IdProntuario = TB_Paciente.IdProntuario
 	INNER JOIN
 	TB_Feedback ON TB_Feedback.IdPaciente = TB_Paciente.IdPaciente
-
-
-	SELECT NomeCompleto,TB_Medico.IdMedico,IdConsulta FROM TB_Usuario
-	INNER JOIN TB_Paciente
-	ON TB_Paciente.IdUsuario = TB_Usuario.IdUsuario
-	INNER JOIN TB_Consulta
-	ON TB_Consulta.IdPaciente = TB_Paciente.IdPaciente
-	INNER JOIN TB_Medico
-	ON  TB_Consulta.IdMedico =  TB_Medico.IdMedico
-	WHERE TB_Paciente.IdUsuario = TB_Usuario.IdUsuario
-
-
-
