@@ -30,3 +30,16 @@ FROM
 	TB_Prontuario ON TB_Prontuario.IdProntuario = TB_Paciente.IdProntuario
 	INNER JOIN
 	TB_Feedback ON TB_Feedback.IdPaciente = TB_Paciente.IdPaciente
+
+
+	SELECT * FROM TB_Adm
+	SELECT * FROM TB_Clinica
+	SELECT * FROM TB_Consulta
+	SELECT * FROM TB_Especialidade
+	SELECT * FROM TB_Feedback
+	SELECT * FROM TB_Medico
+	SELECT * FROM TB_Paciente
+	SELECT * FROM TB_PlanoSaude
+	SELECT * FROM TB_Prontuario
+	SELECT * FROM TB_TipoDeUsuario
+	SELECT * FROM TB_Usuario
