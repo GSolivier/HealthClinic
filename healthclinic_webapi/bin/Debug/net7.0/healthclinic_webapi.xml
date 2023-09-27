@@ -1,0 +1,239 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>healthclinic_webapi</name>
+    </assembly>
+    <members>
+        <member name="T:healthclinic_webapi.Controllers.EspecialidadeController">
+            <summary>
+            Controlador com os endpoints da entidade Especialidade
+            </summary>
+        </member>
+        <member name="M:healthclinic_webapi.Controllers.EspecialidadeController.#ctor">
+            <summary>
+            Construtor que instancia o objeto do Repository
+            </summary>
+        </member>
+        <member name="M:healthclinic_webapi.Controllers.EspecialidadeController.Post(healthclinic_webapi.Domains.Especialidade)">
+            <summary>
+            Endpoint que acessa o método Cadastrar da EspecialidadeRepository
+            </summary>
+            <param name="especialidade">Objeto que será cadastrado</param>
+            <returns>Retorna um StatusCode(201) - Created</returns>
+        </member>
+        <member name="M:healthclinic_webapi.Controllers.EspecialidadeController.Get">
+            <summary>
+            Enpoint que acessa o método Listar do EspecialidadeRepository
+            </summary>
+            <returns>Retorna um StatusCode(200) - Ok com a lista de objetos</returns>
+        </member>
+        <member name="M:healthclinic_webapi.Controllers.EspecialidadeController.Put(System.Guid,healthclinic_webapi.Domains.Especialidade)">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:healthclinic_webapi.Controllers.TiposUsuarioController">
+            <summary>
+            Controlador com os endpoints da entidade TiposUsuario
+            </summary>
+        </member>
+        <member name="M:healthclinic_webapi.Controllers.TiposUsuarioController.#ctor">
+            <summary>
+            Construtor que instancia o objeto do repositório
+            </summary>
+        </member>
+        <member name="M:healthclinic_webapi.Controllers.TiposUsuarioController.Post(healthclinic_webapi.Domains.TiposUsuario)">
+            <summary>
+            Endpoint que acessa o método Cadastrar do TiposUsuarioRepository
+            </summary>
+            <param name="tiposUsuario">Objeto com os atributos a serem cadastrados</param>
+            <returns>Retorna um StatusCode(201) - Created</returns>
+        </member>
+        <member name="M:healthclinic_webapi.Controllers.TiposUsuarioController.Get">
+            <summary>
+            Endpoint que acessa o método Listar do TiposUsuarioRepository
+            </summary>
+            <returns>Retorna um StatusCode(200) - Ok com a lista de objetos</returns>
+        </member>
+        <member name="M:healthclinic_webapi.Controllers.TiposUsuarioController.Put(System.Guid,healthclinic_webapi.Domains.TiposUsuario)">
+            <summary>
+            Endpoint que acessa o método Atualizar do TiposUsuarioRepository
+            </summary>
+            <param name="id">ID do usuário que será atualizado</param>
+            <param name="tiposUsuario">Objeto com as novas informações</param>
+            <returns>Retorna um StatusCode(200) - Ok</returns>
+        </member>
+        <member name="M:healthclinic_webapi.Controllers.TiposUsuarioController.Delete(System.Guid)">
+            <summary>
+            Endpoint que acessa o método Deletar do TiposUsuarioRepository
+            </summary>
+            <param name="id">ID do tipo de usuário que será deletado</param>
+            <returns>Retorna um StatusCode(204) - NoContent</returns>
+        </member>
+        <member name="T:healthclinic_webapi.Interfaces.IEspecialidadeRepository">
+            <summary>
+            Interface que define os métodos da entidade Especialidade
+            </summary>
+        </member>
+        <member name="M:healthclinic_webapi.Interfaces.IEspecialidadeRepository.Cadastrar(healthclinic_webapi.Domains.Especialidade)">
+            <summary>
+            Método que cadastra uma nova especialidade
+            </summary>
+            <param name="especialidade">Objeto que será cadastrado</param>
+        </member>
+        <member name="M:healthclinic_webapi.Interfaces.IEspecialidadeRepository.Listar">
+            <summary>
+            Método que lista todas as especialidades
+            </summary>
+            <returns>Retorna uma lista com todos os objetos</returns>
+        </member>
+        <member name="M:healthclinic_webapi.Interfaces.IEspecialidadeRepository.Atualizar(System.Guid,healthclinic_webapi.Domains.Especialidade)">
+            <summary>
+            Método que atualiza uma especialidade já existente
+            </summary>
+            <param name="id">ID da especialidade que será atualizada</param>
+            <param name="especialidade">Objeto com as novas informações</param>
+        </member>
+        <member name="M:healthclinic_webapi.Interfaces.IEspecialidadeRepository.Deletar(System.Guid)">
+            <summary>
+            Método que deleta uma especialidade
+            </summary>
+            <param name="id">ID da especialidade que será deletada</param>
+        </member>
+        <member name="M:healthclinic_webapi.Interfaces.IEspecialidadeRepository.BuscarPorId(System.Guid)">
+            <summary>
+            Método que busca uma especialidade
+            </summary>
+            <param name="id">ID da especialidade que será buscada</param>
+            <returns>Retorna o objeto encontrado</returns>
+        </member>
+        <member name="T:healthclinic_webapi.Interfaces.ITiposUsuarioRepository">
+            <summary>
+            Interface responsável por definir os métodos da entidade TiposUsuario
+            </summary>
+        </member>
+        <member name="M:healthclinic_webapi.Interfaces.ITiposUsuarioRepository.Cadastrar(healthclinic_webapi.Domains.TiposUsuario)">
+            <summary>
+            Método para cadastrar um novo tipo de usuário
+            </summary>
+            <param name="tiposUsuario">Objeto com os novos atributos a serem cadastrados</param>
+        </member>
+        <member name="M:healthclinic_webapi.Interfaces.ITiposUsuarioRepository.Listar">
+            <summary>
+            Método que lista todos os tipos de usuários
+            </summary>
+            <returns>Retorna uma lista com todos os objetos da tabela</returns>
+        </member>
+        <member name="M:healthclinic_webapi.Interfaces.ITiposUsuarioRepository.Atualizar(System.Guid,healthclinic_webapi.Domains.TiposUsuario)">
+            <summary>
+            Método para atualizar um tipo de usuário existente
+            </summary>
+            <param name="id">ID do tipo de usuário que será atualizado</param>
+            <param name="tiposUsuario">objeto com os novos atributos que vão sobrepor os antigos</param>
+        </member>
+        <member name="M:healthclinic_webapi.Interfaces.ITiposUsuarioRepository.Deletar(System.Guid)">
+            <summary>
+            Método para deletar um tipo de usuário
+            </summary>
+            <param name="id">ID do tipo de usuário que será deletado</param>
+        </member>
+        <member name="M:healthclinic_webapi.Interfaces.ITiposUsuarioRepository.BuscarPorId(System.Guid)">
+            <summary>
+            Método para buscar um objeto TiposUsuario pelo seu ID
+            </summary>
+            <param name="id">ID do objeto que será buscado</param>
+            <returns>Retorna o objeto encontrado</returns>
+        </member>
+        <member name="T:healthclinic_webapi.Migrations.bd_v1">
+            <inheritdoc />
+        </member>
+        <member name="M:healthclinic_webapi.Migrations.bd_v1.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:healthclinic_webapi.Migrations.bd_v1.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:healthclinic_webapi.Migrations.bd_v1.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:healthclinic_webapi.Repositories.EspecialidadeRepository">
+            <summary>
+            Repostirio que herda os métodos definidos na interface IEspecialidadeRepository
+            </summary>
+        </member>
+        <member name="M:healthclinic_webapi.Repositories.EspecialidadeRepository.#ctor">
+            <summary>
+            Construtor que instancia o objeto da context
+            </summary>
+        </member>
+        <member name="M:healthclinic_webapi.Repositories.EspecialidadeRepository.Cadastrar(healthclinic_webapi.Domains.Especialidade)">
+            <summary>
+            Método que cadastra uma nova especialidade
+            </summary>
+            <param name="especialidade">Objeto que será cadastrado</param>
+        </member>
+        <member name="M:healthclinic_webapi.Repositories.EspecialidadeRepository.Listar">
+            <summary>
+            Método que lista todas as especialidades
+            </summary>
+            <returns>Retorna uma lista com todos os objetos</returns>
+        </member>
+        <member name="M:healthclinic_webapi.Repositories.EspecialidadeRepository.Atualizar(System.Guid,healthclinic_webapi.Domains.Especialidade)">
+            <summary>
+            Método que atualiza uma especialidade já existente
+            </summary>
+            <param name="id">ID da especialidade que será atualizada</param>
+            <param name="especialidade">Objeto com as novas informações</param>
+        </member>
+        <member name="M:healthclinic_webapi.Repositories.EspecialidadeRepository.BuscarPorId(System.Guid)">
+            <summary>
+            Método que busca uma especialidade
+            </summary>
+            <param name="id">ID da especialidade que será buscada</param>
+            <returns>Retorna o objeto encontrado</returns>
+        </member>
+        <member name="T:healthclinic_webapi.Repositories.TiposUsuarioRepository">
+            <summary>
+            Repostirio que herda os métodos definidos na interface ITiposUsuarioRepository
+            </summary>
+        </member>
+        <member name="M:healthclinic_webapi.Repositories.TiposUsuarioRepository.#ctor">
+            <summary>
+            Construtor que instancia a classe do contexto
+            </summary>
+        </member>
+        <member name="M:healthclinic_webapi.Repositories.TiposUsuarioRepository.Cadastrar(healthclinic_webapi.Domains.TiposUsuario)">
+            <summary>
+            Método para cadastrar um novo tipo de usuário
+            </summary>
+            <param name="tiposUsuario">Objeto com os novos atributos a serem cadastrados</param>
+        </member>
+        <member name="M:healthclinic_webapi.Repositories.TiposUsuarioRepository.Listar">
+            <summary>
+            Método que lista todos os tipos de usuários
+            </summary>
+            <returns>Retorna uma lista com todos os objetos da tabela</returns>
+        </member>
+        <member name="M:healthclinic_webapi.Repositories.TiposUsuarioRepository.Atualizar(System.Guid,healthclinic_webapi.Domains.TiposUsuario)">
+            <summary>
+            Método para atualizar um tipo de usuário existente
+            </summary>
+            <param name="id">ID do tipo de usuário que será atualizado</param>
+            <param name="tiposUsuario">objeto com os novos atributos que vão sobrepor os antigos</param>
+        </member>
+        <member name="M:healthclinic_webapi.Repositories.TiposUsuarioRepository.Deletar(System.Guid)">
+            <summary>
+            Método para deletar um tipo de usuário
+            </summary>
+            <param name="id">ID do tipo de usuário que será deletado</param>
+        </member>
+        <member name="M:healthclinic_webapi.Repositories.TiposUsuarioRepository.BuscarPorId(System.Guid)">
+            <summary>
+            Método para buscar um objeto TiposUsuario pelo seu ID
+            </summary>
+            <param name="id">ID do objeto que será buscado</param>
+            <returns>Retorna o objeto encontrado</returns>
+        </member>
+    </members>
+</doc>

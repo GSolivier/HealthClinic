@@ -18,5 +18,11 @@ namespace healthclinic_webapi.Contexts
         public DbSet<TiposUsuario> TiposUsuario { get; set; }
         public DbSet<Usuario> Usuario { get; set; }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer("Server=NOTE18-S14; Database=healthclinic_DB; user id= sa; Pwd=Senai@134; TrustServerCertificate=True", x => x.UseDateOnlyTimeOnly());
+
+            base.OnConfiguring(optionsBuilder);
+        }
     }
 }
