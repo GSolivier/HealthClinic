@@ -26,12 +26,5 @@ namespace healthclinic_webapi.Domains
 
         [ForeignKey(nameof(IdPlanoSaude))]
         public PlanoSaude? PlanoSaude { get; set; }
-
-        //ref.tabela Prontuario
-        [Required(ErrorMessage = "O ID do prontuário é obrigatório")]
-        public Guid IdProntuario { get; set; }
-
-        [ForeignKey(nameof(IdProntuario))]
-        public Prontuario? Prontuario { get; set; }
     }
 }

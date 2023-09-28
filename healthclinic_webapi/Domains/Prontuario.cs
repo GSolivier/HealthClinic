@@ -11,5 +11,12 @@ namespace healthclinic_webapi.Domains
 
         [Column(TypeName = "TEXT")]
         public string? Descricao { get; set; }
+
+        //ref.tabela Paciente
+        [Required(ErrorMessage = "O ID do Paciente é obrigatório")]
+        public Guid IdPaciente { get; set; }
+
+        [ForeignKey(nameof(IdPaciente))]
+        public Paciente? Paciente { get; set; }
     }
 }

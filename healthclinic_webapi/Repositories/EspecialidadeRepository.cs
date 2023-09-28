@@ -81,9 +81,25 @@ namespace healthclinic_webapi.Repositories
             }
         }
 
+        /// <summary>
+        /// Método que deleta uma especialidade
+        /// </summary>
+        /// <param name="id">ID da especialidade que será deletada</param>
         public void Deletar(Guid id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Especialidade especialidadeBuscada = BuscarPorId(id);
+
+                _clinicContext.Especialidade.Remove(especialidadeBuscada);
+
+                _clinicContext.SaveChanges();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         /// <summary>
@@ -110,8 +126,6 @@ namespace healthclinic_webapi.Repositories
                 throw;
             }
         }
-
-
 
     }
 }

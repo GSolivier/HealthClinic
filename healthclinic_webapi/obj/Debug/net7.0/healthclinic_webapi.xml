@@ -4,6 +4,23 @@
         <name>healthclinic_webapi</name>
     </assembly>
     <members>
+        <member name="T:healthclinic_webapi.Controllers.ClinicaController">
+            <summary>
+            Controlador com os endpoints da entidade Clinica
+            </summary>
+        </member>
+        <member name="M:healthclinic_webapi.Controllers.ClinicaController.#ctor">
+            <summary>
+            Construtor que instancia o objeto da Repository
+            </summary>
+        </member>
+        <member name="M:healthclinic_webapi.Controllers.ClinicaController.Post(healthclinic_webapi.Domains.Clinica)">
+            <summary>
+            Endpoint que acessa o método Cadastrar na ClinicaRepository
+            </summary>
+            <param name="clinica">Objeto que será cadastrado</param>
+            <returns>Retorna um StatusCode(201) - Created</returns>
+        </member>
         <member name="T:healthclinic_webapi.Controllers.EspecialidadeController">
             <summary>
             Controlador com os endpoints da entidade Especialidade
@@ -27,11 +44,70 @@
             </summary>
             <returns>Retorna um StatusCode(200) - Ok com a lista de objetos</returns>
         </member>
+        <member name="M:healthclinic_webapi.Controllers.EspecialidadeController.GetById(System.Guid)">
+            <summary>
+            Endpoint que acessa o método BuscarPorId do EspecialidadeRepository
+            </summary>
+            <param name="id">ID do objeto que será buscado</param>
+            <returns>Retorna um StatusCode(200) - Ok com o objeto encontrado</returns>
+        </member>
         <member name="M:healthclinic_webapi.Controllers.EspecialidadeController.Put(System.Guid,healthclinic_webapi.Domains.Especialidade)">
             <summary>
-            
+            Endpoint que acessa o método Atualizar na EspecialidadeRepository
             </summary>
-            <returns></returns>
+            <returns>Retorna um StatusCode(200) - Ok</returns>
+        </member>
+        <member name="M:healthclinic_webapi.Controllers.EspecialidadeController.Delete(System.Guid)">
+            <summary>
+            Endpoint que acessa o método Deletar da EspecialidadeRepository
+            </summary>
+            <param name="id">ID do usuário que será deletada</param>
+            <returns>Retorna um StatusCode(204) - NoContent</returns>
+        </member>
+        <member name="T:healthclinic_webapi.Controllers.PlanoSaudeController">
+            <summary>
+            Controlador que armazena os endpoints da entidade PlanoSaude
+            </summary>
+        </member>
+        <member name="M:healthclinic_webapi.Controllers.PlanoSaudeController.#ctor">
+            <summary>
+            Construtor que instancia o objeto do Repository
+            </summary>
+        </member>
+        <member name="M:healthclinic_webapi.Controllers.PlanoSaudeController.Post(healthclinic_webapi.Domains.PlanoSaude)">
+            <summary>
+            Endpoint que acessa o método Cadastrar do PlanoSaudeRepository
+            </summary>
+            <param name="planoSaude">Objeto que será cadastrado</param>
+            <returns>Retorna um StatusCode(201) - Created com o objeto criado</returns>
+        </member>
+        <member name="M:healthclinic_webapi.Controllers.PlanoSaudeController.Get">
+            <summary>
+            Endpoint que acessa o método Listar do PlanoSaudeRepository
+            </summary>
+            <returns>Retorna um StatusCode(200) - Ok com a lista de objetos</returns>
+        </member>
+        <member name="M:healthclinic_webapi.Controllers.PlanoSaudeController.GetById(System.Guid)">
+            <summary>
+            Endpoint que acessa o método BuscarPorId no PlanoSaudeRepository
+            </summary>
+            <param name="id">ID do plano de saúde que será buscado</param>
+            <returns>Retorna um StatusCode(200) - Ok com o objeto encontrado</returns>
+        </member>
+        <member name="M:healthclinic_webapi.Controllers.PlanoSaudeController.Put(System.Guid,healthclinic_webapi.Domains.PlanoSaude)">
+            <summary>
+            Endpoint que acessa o método Atualizar no PlanoSaudeRepository
+            </summary>
+            <param name="id">ID do objeto que será atualizado</param>
+            <param name="planoSaude">Objeto com os novos atributos</param>
+            <returns>Retorna um StatusCode(200) - Ok</returns>
+        </member>
+        <member name="M:healthclinic_webapi.Controllers.PlanoSaudeController.Delete(System.Guid)">
+            <summary>
+            Endpoint que acessa o método Deletar da PlanoSaudeRepository
+            </summary>
+            <param name="id">ID do objeto que será deletado</param>
+            <returns>Retorna um StatusCode(204) - NoCOntent</returns>
         </member>
         <member name="T:healthclinic_webapi.Controllers.TiposUsuarioController">
             <summary>
@@ -71,6 +147,17 @@
             <param name="id">ID do tipo de usuário que será deletado</param>
             <returns>Retorna um StatusCode(204) - NoContent</returns>
         </member>
+        <member name="T:healthclinic_webapi.Interfaces.IClinicaRepository">
+            <summary>
+            Interface que define os métodos da entidade Clinica
+            </summary>
+        </member>
+        <member name="M:healthclinic_webapi.Interfaces.IClinicaRepository.Cadastrar(healthclinic_webapi.Domains.Clinica)">
+            <summary>
+            Método que cadastra uma nova clinica
+            </summary>
+            <param name="clinica">Objeto que será cadastrado</param>
+        </member>
         <member name="T:healthclinic_webapi.Interfaces.IEspecialidadeRepository">
             <summary>
             Interface que define os métodos da entidade Especialidade
@@ -107,6 +194,76 @@
             </summary>
             <param name="id">ID da especialidade que será buscada</param>
             <returns>Retorna o objeto encontrado</returns>
+        </member>
+        <member name="T:healthclinic_webapi.Interfaces.IPlanoSaudeRepository">
+            <summary>
+            Interface responsável por definir os métodos da entidade PlanoSaude
+            </summary>
+        </member>
+        <member name="M:healthclinic_webapi.Interfaces.IPlanoSaudeRepository.Cadastrar(healthclinic_webapi.Domains.PlanoSaude)">
+            <summary>
+            Método responsável por cadastrar um novo plano de saúde
+            </summary>
+            <param name="planoSaude">Objeto que será cadastrado</param>
+        </member>
+        <member name="M:healthclinic_webapi.Interfaces.IPlanoSaudeRepository.Listar">
+            <summary>
+            Método para listar todos os planos de saúde
+            </summary>
+            <returns>Retorna uma lista de objetos</returns>
+        </member>
+        <member name="M:healthclinic_webapi.Interfaces.IPlanoSaudeRepository.Atualizar(System.Guid,healthclinic_webapi.Domains.PlanoSaude)">
+            <summary>
+            Método para atualizar um plano de saúde existente
+            </summary>
+            <param name="id">ID do plano de saúde que será atualizado</param>
+            <param name="planoSaude">Objeto com os novos atributos</param>
+        </member>
+        <member name="M:healthclinic_webapi.Interfaces.IPlanoSaudeRepository.Deletar(System.Guid)">
+            <summary>
+            Método para deletar um plano de saúde existente
+            </summary>
+            <param name="id">ID do plano de saúde que será deletado</param>
+        </member>
+        <member name="M:healthclinic_webapi.Interfaces.IPlanoSaudeRepository.BuscarPorId(System.Guid)">
+            <summary>
+            Método para buscar um plano de saúde pelo seu ID
+            </summary>
+            <param name="id">ID do plano de saúde que será buscado</param>
+            <returns>Retorna o objeto encontrado</returns>
+        </member>
+        <member name="T:healthclinic_webapi.Interfaces.IProntuarioRepository">
+            <summary>
+            Interface que define os métodos da entidade Prontuario
+            </summary>
+        </member>
+        <member name="M:healthclinic_webapi.Interfaces.IProntuarioRepository.Cadastrar(System.Guid,healthclinic_webapi.Domains.Prontuario)">
+            <summary>
+            Método para cadastrar um novo prontuário
+            </summary>
+            <param name="prontuario">objeto que será cadastrado</param>
+            <param name="idPaciente">Id o usuario que será passado</param>
+        </member>
+        <member name="M:healthclinic_webapi.Interfaces.IProntuarioRepository.Atualizar(System.Guid,healthclinic_webapi.Domains.Prontuario)">
+            <summary>
+            Método para atualizar um prontuário
+            </summary>
+            <param name="id">ID do prontuario que será atualizado</param>
+            <param name="prontuario">Objeto com os novos atributos</param>
+        </member>
+        <member name="M:healthclinic_webapi.Interfaces.IProntuarioRepository.BuscarPorId(System.Guid)">
+            <summary>
+            Método para buscar um prontuário pelo seu ID
+            </summary>
+            <param name="id">ID do prontuário que será buscado</param>
+            <returns>Retorna o objeto encontrado</returns>
+        </member>
+        <member name="M:healthclinic_webapi.Interfaces.IProntuarioRepository.BuscarPorIdPaciente(System.Guid)">
+            <summary>
+            Método para buscar um prontuário pelo ID do usuario ligado a ele
+            </summary>
+            <param name="idPaciente">ID do usuario que terá o seu prontuáro buscado</param>
+            <returns>retorna o objeto encontrado</returns>
         </member>
         <member name="T:healthclinic_webapi.Interfaces.ITiposUsuarioRepository">
             <summary>
@@ -157,6 +314,34 @@
         <member name="M:healthclinic_webapi.Migrations.bd_v1.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
+        <member name="T:healthclinic_webapi.Migrations.bd_v2">
+            <inheritdoc />
+        </member>
+        <member name="M:healthclinic_webapi.Migrations.bd_v2.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:healthclinic_webapi.Migrations.bd_v2.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:healthclinic_webapi.Migrations.bd_v2.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:healthclinic_webapi.Repositories.ClinicaRepository">
+            <summary>
+            Repository que herda os métodos da interface IClinicaRepository
+            </summary>
+        </member>
+        <member name="M:healthclinic_webapi.Repositories.ClinicaRepository.#ctor">
+            <summary>
+            Construtor que instancia o objeto da context
+            </summary>
+        </member>
+        <member name="M:healthclinic_webapi.Repositories.ClinicaRepository.Cadastrar(healthclinic_webapi.Domains.Clinica)">
+            <summary>
+            Método que cadastra uma nova clinica
+            </summary>
+            <param name="clinica">Objeto que será cadastrado</param>
+        </member>
         <member name="T:healthclinic_webapi.Repositories.EspecialidadeRepository">
             <summary>
             Repostirio que herda os métodos definidos na interface IEspecialidadeRepository
@@ -186,12 +371,98 @@
             <param name="id">ID da especialidade que será atualizada</param>
             <param name="especialidade">Objeto com as novas informações</param>
         </member>
+        <member name="M:healthclinic_webapi.Repositories.EspecialidadeRepository.Deletar(System.Guid)">
+            <summary>
+            Método que deleta uma especialidade
+            </summary>
+            <param name="id">ID da especialidade que será deletada</param>
+        </member>
         <member name="M:healthclinic_webapi.Repositories.EspecialidadeRepository.BuscarPorId(System.Guid)">
             <summary>
             Método que busca uma especialidade
             </summary>
             <param name="id">ID da especialidade que será buscada</param>
             <returns>Retorna o objeto encontrado</returns>
+        </member>
+        <member name="T:healthclinic_webapi.Repositories.PlanoSaudeRepository">
+            <summary>
+            Repository que herda os métodos da interface IPlanoSaudeRepository
+            </summary>
+        </member>
+        <member name="M:healthclinic_webapi.Repositories.PlanoSaudeRepository.#ctor">
+            <summary>
+            Construtor que instancia o objeto da Context
+            </summary>
+        </member>
+        <member name="M:healthclinic_webapi.Repositories.PlanoSaudeRepository.Cadastrar(healthclinic_webapi.Domains.PlanoSaude)">
+            <summary>
+            Método responsável por cadastrar um novo plano de saúde
+            </summary>
+            <param name="planoSaude">Objeto que será cadastrado</param>
+        </member>
+        <member name="M:healthclinic_webapi.Repositories.PlanoSaudeRepository.Listar">
+            <summary>
+            Método para listar todos os planos de saúde
+            </summary>
+            <returns>Retorna uma lista de objetos</returns>
+        </member>
+        <member name="M:healthclinic_webapi.Repositories.PlanoSaudeRepository.Atualizar(System.Guid,healthclinic_webapi.Domains.PlanoSaude)">
+            <summary>
+            Método para atualizar um plano de saúde existente
+            </summary>
+            <param name="id">ID do plano de saúde que será atualizado</param>
+            <param name="planoSaude">Objeto com os novos atributos</param>
+        </member>
+        <member name="M:healthclinic_webapi.Repositories.PlanoSaudeRepository.Deletar(System.Guid)">
+            <summary>
+            Método para deletar um plano de saúde existente
+            </summary>
+            <param name="id">ID do plano de saúde que será deletado</param>
+        </member>
+        <member name="M:healthclinic_webapi.Repositories.PlanoSaudeRepository.BuscarPorId(System.Guid)">
+            <summary>
+            Método para buscar um plano de saúde pelo seu ID
+            </summary>
+            <param name="id">ID do plano de saúde que será buscado</param>
+            <returns>Retorna o objeto encontrado</returns>
+        </member>
+        <member name="T:healthclinic_webapi.Repositories.ProntuarioRepository">
+            <summary>
+            Repository que herda os métodos da interface IPronturarioRepository
+            </summary>
+        </member>
+        <member name="M:healthclinic_webapi.Repositories.ProntuarioRepository.#ctor">
+            <summary>
+            construtor que instancia a Context
+            </summary>
+        </member>
+        <member name="M:healthclinic_webapi.Repositories.ProntuarioRepository.Cadastrar(System.Guid,healthclinic_webapi.Domains.Prontuario)">
+            <summary>
+            Método para cadastrar um novo prontuário
+            </summary>
+            <param name="prontuario">objeto que será cadastrado</param>
+            <param name="idPaciente">Id o usuario que será passado</param>
+        </member>
+        <member name="M:healthclinic_webapi.Repositories.ProntuarioRepository.Atualizar(System.Guid,healthclinic_webapi.Domains.Prontuario)">
+            <summary>
+            Método para atualizar um prontuário
+            </summary>
+            <param name="id">ID do paciente que tera o prontuario que será atualizado</param>
+            <param name="prontuario">Objeto com os novos atributos</param>
+        </member>
+        <member name="M:healthclinic_webapi.Repositories.ProntuarioRepository.BuscarPorId(System.Guid)">
+            <summary>
+            Método para buscar um prontuário pelo seu ID
+            </summary>
+            <param name="id">ID do prontuário que será buscado</param>
+            <returns>Retorna o objeto encontrado</returns>
+        </member>
+        <member name="M:healthclinic_webapi.Repositories.ProntuarioRepository.BuscarPorIdPaciente(System.Guid)">
+            <summary>
+            Método para buscar um prontuário pelo ID do usuario ligado a ele
+            </summary>
+            <param name="idPaciente">ID do usuario que terá o seu prontuáro buscado</param>
+            <returns>retorna o objeto encontrado</returns>
         </member>
         <member name="T:healthclinic_webapi.Repositories.TiposUsuarioRepository">
             <summary>
