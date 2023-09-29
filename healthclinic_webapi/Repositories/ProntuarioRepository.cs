@@ -24,15 +24,10 @@ namespace healthclinic_webapi.Repositories
         /// Método para cadastrar um novo prontuário
         /// </summary>
         /// <param name="prontuario">objeto que será cadastrado</param>
-        /// <param name="idPaciente">Id o usuario que será passado</param>
-        public void Cadastrar(Guid idPaciente, Prontuario prontuario)
+        public void Cadastrar(Prontuario prontuario)
         {
             try
             {
-                prontuario.Id = Guid.NewGuid();
-
-                prontuario.IdPaciente = idPaciente;
-
                 _clinicContext.Prontuario.Add(prontuario);
 
                 _clinicContext.SaveChanges();

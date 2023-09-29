@@ -11,8 +11,7 @@ namespace healthclinic_webapi.Interfaces
         /// Método para cadastrar um novo prontuário
         /// </summary>
         /// <param name="prontuario">objeto que será cadastrado</param>
-        /// <param name="idPaciente">Id o usuario que será passado</param>
-        void Cadastrar(Guid idPaciente, Prontuario prontuario);
+        void Cadastrar(Prontuario prontuario);
 
         /// <summary>
         /// Método para atualizar um prontuário

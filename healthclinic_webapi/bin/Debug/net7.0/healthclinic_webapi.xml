@@ -147,6 +147,55 @@
             <param name="id">ID do tipo de usuário que será deletado</param>
             <returns>Retorna um StatusCode(204) - NoContent</returns>
         </member>
+        <member name="T:healthclinic_webapi.Controllers.UsuarioController">
+            <summary>
+            Controlador com os endpoints da entidade Usuário
+            </summary>
+        </member>
+        <member name="M:healthclinic_webapi.Controllers.UsuarioController.#ctor">
+            <summary>
+            Construtor que instancia os objetos
+            </summary>
+        </member>
+        <member name="M:healthclinic_webapi.Controllers.UsuarioController.PostPaciente(healthclinic_webapi.DTOs.UsuarioPacienteDTO)">
+            <summary>
+            Endpoint que acessa o Método Cadastrar tanto da UsuarioRepository quanto do PacienteRepository
+            </summary>
+            <param name="usuarioPaciente">DTO para cadastrar um usuário do tipo paciente</param>
+            <returns></returns>
+        </member>
+        <member name="M:healthclinic_webapi.Controllers.UsuarioController.PostAdm(healthclinic_webapi.DTOs.UsuarioAdmDTO)">
+            <summary>
+            Endpoint que acessa o método Cadastrar tanto do UsuarioRepository quanto do AdministradorRepository
+            </summary>
+            <param name="usuarioAdm">DTO o usuário do tipo administrador</param>
+            <returns>Retorna um StatusCode(201) - Created</returns>
+        </member>
+        <member name="M:healthclinic_webapi.Controllers.UsuarioController.PostMedico(healthclinic_webapi.DTOs.UsuarioMedicoDTO)">
+            <summary>
+            Endpoint que acessa o método Cadastrar tanto do UsuarioRepository quanto do MedicoRepository
+            </summary>
+            <param name="usuarioMedico">DTO do usuário do tipo médico</param>
+            <returns>Retorna um StatusCode(201) - Created</returns>
+        </member>
+        <member name="T:healthclinic_webapi.Interfaces.IAdministradorRepository">
+            <summary>
+            Interface que define os métodos da entidade Administrador
+            </summary>
+        </member>
+        <member name="M:healthclinic_webapi.Interfaces.IAdministradorRepository.Cadastrar(healthclinic_webapi.Domains.Administrador)">
+            <summary>
+            Método que cadastrar um novo ADministrador
+            </summary>
+            <param name="administrador">Objeto que será cadastrado</param>
+        </member>
+        <member name="M:healthclinic_webapi.Interfaces.IAdministradorRepository.BuscarPorId(System.Guid)">
+            <summary>
+            Método para buscas um novo administrador pelo seu ID
+            </summary>
+            <param name="id">ID do adm que será buscado</param>
+            <returns>retorna o objeto encontrado</returns>
+        </member>
         <member name="T:healthclinic_webapi.Interfaces.IClinicaRepository">
             <summary>
             Interface que define os métodos da entidade Clinica
@@ -195,6 +244,24 @@
             <param name="id">ID da especialidade que será buscada</param>
             <returns>Retorna o objeto encontrado</returns>
         </member>
+        <member name="T:healthclinic_webapi.Interfaces.IMedicoRepository">
+            <summary>
+            Interface que define os métodos da entidade Medico
+            </summary>
+        </member>
+        <member name="M:healthclinic_webapi.Interfaces.IMedicoRepository.Cadastrar(healthclinic_webapi.Domains.Medico)">
+            <summary>
+            Método para cadastrar um novo usuário do tipo Médico
+            </summary>
+            <param name="medico">Objeto que será cadastrado</param>
+        </member>
+        <member name="M:healthclinic_webapi.Interfaces.IMedicoRepository.BuscarPorId(System.Guid)">
+            <summary>
+            Método para buscar um Médico pelo seu ID
+            </summary>
+            <param name="id">ID do médico que será buscado</param>
+            <returns>Retorna o objeto encontrado</returns>
+        </member>
         <member name="T:healthclinic_webapi.Interfaces.IPlanoSaudeRepository">
             <summary>
             Interface responsável por definir os métodos da entidade PlanoSaude
@@ -237,12 +304,11 @@
             Interface que define os métodos da entidade Prontuario
             </summary>
         </member>
-        <member name="M:healthclinic_webapi.Interfaces.IProntuarioRepository.Cadastrar(System.Guid,healthclinic_webapi.Domains.Prontuario)">
+        <member name="M:healthclinic_webapi.Interfaces.IProntuarioRepository.Cadastrar(healthclinic_webapi.Domains.Prontuario)">
             <summary>
             Método para cadastrar um novo prontuário
             </summary>
             <param name="prontuario">objeto que será cadastrado</param>
-            <param name="idPaciente">Id o usuario que será passado</param>
         </member>
         <member name="M:healthclinic_webapi.Interfaces.IProntuarioRepository.Atualizar(System.Guid,healthclinic_webapi.Domains.Prontuario)">
             <summary>
@@ -302,6 +368,32 @@
             <param name="id">ID do objeto que será buscado</param>
             <returns>Retorna o objeto encontrado</returns>
         </member>
+        <member name="T:healthclinic_webapi.Interfaces.IUsuarioRepository">
+            <summary>
+            Interface que defini os métodos da entidade Usuario
+            </summary>
+        </member>
+        <member name="M:healthclinic_webapi.Interfaces.IUsuarioRepository.Cadastrar(healthclinic_webapi.Domains.Usuario)">
+            <summary>
+            Método para cadastrar um novo usuário
+            </summary>
+            <param name="usuario">Objeto que será cadastrado</param>
+        </member>
+        <member name="M:healthclinic_webapi.Interfaces.IUsuarioRepository.BuscarPorId(System.Guid)">
+            <summary>
+            Método para buscar um usuário pelo seu ID
+            </summary>
+            <param name="id">ID do usário que será buscado</param>
+            <returns>Retorna o objeto encontrado</returns>
+        </member>
+        <member name="M:healthclinic_webapi.Interfaces.IUsuarioRepository.BuscarPorEmailESenha(System.String,System.String)">
+            <summary>
+            Método para buscar um usuário pelo seu Email e Senha
+            </summary>
+            <param name="email">Email do usuário que será buscado</param>
+            <param name="senha">Senha do usuário que será buscada</param>
+            <returns>Retorna o objeto encontrado</returns>
+        </member>
         <member name="T:healthclinic_webapi.Migrations.bd_v1">
             <inheritdoc />
         </member>
@@ -325,6 +417,41 @@
         </member>
         <member name="M:healthclinic_webapi.Migrations.bd_v2.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
+        </member>
+        <member name="T:healthclinic_webapi.Migrations.bd_v3">
+            <inheritdoc />
+        </member>
+        <member name="M:healthclinic_webapi.Migrations.bd_v3.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:healthclinic_webapi.Migrations.bd_v3.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:healthclinic_webapi.Migrations.bd_v3.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:healthclinic_webapi.Repositories.AdministradorRepository">
+            <summary>
+            Repository que herda os métodos da Interdface IAdministradorRepository
+            </summary>
+        </member>
+        <member name="M:healthclinic_webapi.Repositories.AdministradorRepository.#ctor">
+            <summary>
+            Construtor que instancia os métodos da context
+            </summary>
+        </member>
+        <member name="M:healthclinic_webapi.Repositories.AdministradorRepository.Cadastrar(healthclinic_webapi.Domains.Administrador)">
+            <summary>
+            Método que cadastrar um novo ADministrador
+            </summary>
+            <param name="administrador">Objeto que será cadastrado</param>
+        </member>
+        <member name="M:healthclinic_webapi.Repositories.AdministradorRepository.BuscarPorId(System.Guid)">
+            <summary>
+            Método para buscas um novo administrador pelo seu ID
+            </summary>
+            <param name="id">ID do adm que será buscado</param>
+            <returns>retorna o objeto encontrado</returns>
         </member>
         <member name="T:healthclinic_webapi.Repositories.ClinicaRepository">
             <summary>
@@ -384,6 +511,52 @@
             <param name="id">ID da especialidade que será buscada</param>
             <returns>Retorna o objeto encontrado</returns>
         </member>
+        <member name="T:healthclinic_webapi.Repositories.MedicoRepository">
+            <summary>
+            Repository que armazena os métodos
+            </summary>
+        </member>
+        <member name="M:healthclinic_webapi.Repositories.MedicoRepository.#ctor">
+            <summary>
+            Construtor que instancia a Context
+            </summary>
+        </member>
+        <member name="M:healthclinic_webapi.Repositories.MedicoRepository.Cadastrar(healthclinic_webapi.Domains.Medico)">
+            <summary>
+            Método para cadastrar um novo usuário do tipo Médico
+            </summary>
+            <param name="medico">Objeto que será cadastrado</param>
+        </member>
+        <member name="M:healthclinic_webapi.Repositories.MedicoRepository.BuscarPorId(System.Guid)">
+            <summary>
+            Método para buscar um Médico pelo seu ID
+            </summary>
+            <param name="id">ID do médico que será buscado</param>
+            <returns>Retorna o objeto encontrado</returns>
+        </member>
+        <member name="T:healthclinic_webapi.Repositories.PacienteRepository">
+            <summary>
+            Repository que herda os métodos da interface IPacienteRepository
+            </summary>
+        </member>
+        <member name="M:healthclinic_webapi.Repositories.PacienteRepository.#ctor">
+            <summary>
+            Construtor que Instancia os objetos
+            </summary>
+        </member>
+        <member name="M:healthclinic_webapi.Repositories.PacienteRepository.Cadastrar(healthclinic_webapi.Domains.Paciente)">
+            <summary>
+            Método para cadastrar um Paciente e um prontuáro ja ligado a esse paciente
+            </summary>
+            <param name="paciente">Objeto do paciente que será cadastradi</param>
+        </member>
+        <member name="M:healthclinic_webapi.Repositories.PacienteRepository.BuscarPorId(System.Guid)">
+            <summary>
+            Método para buscar um paciente pelo seu ID
+            </summary>
+            <param name="id">ID do paciente que será buscada</param>
+            <returns>retorna o objeto encontrado</returns>
+        </member>
         <member name="T:healthclinic_webapi.Repositories.PlanoSaudeRepository">
             <summary>
             Repository que herda os métodos da interface IPlanoSaudeRepository
@@ -436,12 +609,11 @@
             construtor que instancia a Context
             </summary>
         </member>
-        <member name="M:healthclinic_webapi.Repositories.ProntuarioRepository.Cadastrar(System.Guid,healthclinic_webapi.Domains.Prontuario)">
+        <member name="M:healthclinic_webapi.Repositories.ProntuarioRepository.Cadastrar(healthclinic_webapi.Domains.Prontuario)">
             <summary>
             Método para cadastrar um novo prontuário
             </summary>
             <param name="prontuario">objeto que será cadastrado</param>
-            <param name="idPaciente">Id o usuario que será passado</param>
         </member>
         <member name="M:healthclinic_webapi.Repositories.ProntuarioRepository.Atualizar(System.Guid,healthclinic_webapi.Domains.Prontuario)">
             <summary>
@@ -504,6 +676,37 @@
             Método para buscar um objeto TiposUsuario pelo seu ID
             </summary>
             <param name="id">ID do objeto que será buscado</param>
+            <returns>Retorna o objeto encontrado</returns>
+        </member>
+        <member name="T:healthclinic_webapi.Repositories.UsuarioRepository">
+            <summary>
+            Repository que herda os métodos da interface IUsuarioRepository
+            </summary>
+        </member>
+        <member name="M:healthclinic_webapi.Repositories.UsuarioRepository.#ctor">
+            <summary>
+            Construtor que instancia o objeto da context
+            </summary>
+        </member>
+        <member name="M:healthclinic_webapi.Repositories.UsuarioRepository.Cadastrar(healthclinic_webapi.Domains.Usuario)">
+            <summary>
+            Método para cadastrar um novo usuário
+            </summary>
+            <param name="usuario">Objeto que será cadastrado</param>
+        </member>
+        <member name="M:healthclinic_webapi.Repositories.UsuarioRepository.BuscarPorEmailESenha(System.String,System.String)">
+            <summary>
+            Método para buscar um usuário pelo seu Email e Senha
+            </summary>
+            <param name="email">Email do usuário que será buscado</param>
+            <param name="senha">Senha do usuário que será buscada</param>
+            <returns>Retorna o objeto encontrado</returns>
+        </member>
+        <member name="M:healthclinic_webapi.Repositories.UsuarioRepository.BuscarPorId(System.Guid)">
+            <summary>
+            Método para buscar um usuário pelo seu ID
+            </summary>
+            <param name="id">ID do usário que será buscado</param>
             <returns>Retorna o objeto encontrado</returns>
         </member>
     </members>

@@ -1,0 +1,10 @@
+{
+  "nome": "Guilherme Cezar",
+  "email": "gui@paciente.com",
+  "senha": "cezar123456",
+  "dataNascimento": "2002-06-29",
+  "cpf": "5345654757",
+  "endereco": "Rua dos amalubes, 432 - Jardim santa clara",
+  "idTipoUsuario": "243767D6-AE5C-40FD-95DF-689F682BB131",
+  "idPlanoSaude": "4D86E3AE-B90E-4222-B4A8-1421AE22076D"
+}

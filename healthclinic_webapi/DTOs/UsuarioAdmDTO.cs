@@ -1,42 +1,38 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System.ComponentModel.DataAnnotations;
+﻿using healthclinic_webapi.Domains;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
-namespace healthclinic_webapi.Domains
+namespace healthclinic_webapi.DTOs
 {
-    [Table(nameof(Usuario))]
-    [Index(nameof(Email), IsUnique = true)]
-    public class Usuario
+    public class UsuarioAdmDTO
     {
-        [Key]
-        public Guid Id { get; set; }
 
-        [Column(TypeName = "VARCHAR(150)")]
         [Required(ErrorMessage = "O nome do usuário é obrigatório")]
         public string? Nome { get; set; }
 
-        [Column(TypeName = "VARCHAR(150)")]
+
         [Required(ErrorMessage = "O email é obrigatório")]
         public string? Email { get; set; }
 
-        [Column(TypeName = "VARCHAR(60)")]
+
         [Required(ErrorMessage = "A senha é obrigatória")]
         public string? Senha { get; set; }
 
-        [Column(TypeName = "DATE")]
+
         [Required(ErrorMessage = "A data de nascimento é obrigatória")]
         public DateOnly DataNascimento { get; set; }
 
-        [Column(TypeName = "VARCHAR(11)")]
+
         [Required(ErrorMessage = "O CPF é obrigatório")]
         public string? CPF { get; set; }
 
-        //ref.Tabela TiposUsuario
+
         [Required(ErrorMessage = "O ID do tipo de usuário é obrigatório")]
         public Guid IdTipoUsuario { get; set; }
 
-        [ForeignKey(nameof(IdTipoUsuario))]
-        public TiposUsuario? TipoUsuario { get; set; }
+        //Adm
 
+        [Required(ErrorMessage = "O cargo do ADM na empresa é obrigatório")]
+        public string? Cargo { get; set; }
     }
 }
