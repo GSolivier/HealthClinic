@@ -1,6 +1,7 @@
 ﻿using healthclinic_webapi.Domains;
 using healthclinic_webapi.Interfaces;
 using healthclinic_webapi.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -50,6 +51,7 @@ namespace healthclinic_webapi.Controllers
         /// </summary>
         /// <returns>Retorna um StatusCode(200) - Ok com a lista de objetos</returns>
         [HttpGet]
+        [Authorize(Roles = "Administrador")]
         public IActionResult Get()
         {
             try

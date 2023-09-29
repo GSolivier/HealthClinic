@@ -1,4 +1,5 @@
-﻿using healthclinic_webapi.Domains;
+﻿using healthclinic_webapi.Contexts;
+using healthclinic_webapi.Domains;
 using healthclinic_webapi.DTOs;
 using healthclinic_webapi.Interfaces;
 using healthclinic_webapi.Repositories;
@@ -19,6 +20,7 @@ namespace healthclinic_webapi.Controllers
         private IPacienteRepository _pacienteRepository;
         private IAdministradorRepository _administradorRepository;
         private IMedicoRepository _medicoRepository;
+        private readonly ClinicContext _healthContext;
 
         /// <summary>
         /// Construtor que instancia os objetos
@@ -29,6 +31,7 @@ namespace healthclinic_webapi.Controllers
             _pacienteRepository = new PacienteRepository();
             _administradorRepository = new AdministradorRepository();
             _medicoRepository = new MedicoRepository();
+            _healthContext = new ClinicContext();
         }
 
         /// <summary>
@@ -151,6 +154,25 @@ namespace healthclinic_webapi.Controllers
 
                 return StatusCode(201);
 
+            }
+            catch (Exception erro)
+            {
+
+                return BadRequest(erro.Message);
+            }
+        }
+
+        /// <summary>
+        /// Endpoint que busca um usuário pelo seu ID
+        /// </summary>
+        /// <param name="id">ID do usuário que será buscado</param>
+        /// <returns>Retorna um StatusCode(200) - Ok com o objeto encontrado</returns>
+        [HttpGet]
+        public IActionResult GetById(Guid id)
+        {
+            try
+            {
+                return Ok(_usuarioRepository.BuscarPorId(id));
             }
             catch (Exception erro)
             {

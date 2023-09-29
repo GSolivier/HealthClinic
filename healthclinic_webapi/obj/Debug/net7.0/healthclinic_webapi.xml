@@ -64,6 +64,23 @@
             <param name="id">ID do usuário que será deletada</param>
             <returns>Retorna um StatusCode(204) - NoContent</returns>
         </member>
+        <member name="T:healthclinic_webapi.Controllers.LoginController">
+            <summary>
+            Controlador para armazenar as lógicas de login
+            </summary>
+        </member>
+        <member name="M:healthclinic_webapi.Controllers.LoginController.#ctor">
+            <summary>
+            Construtor que instancia o objeto do Repository
+            </summary>
+        </member>
+        <member name="M:healthclinic_webapi.Controllers.LoginController.Login(healthclinic_webapi.ViewModels.LoginViewModel)">
+            <summary>
+            Endpoint que acessa o método BuscarPorEmailESenha e realiza a autenticação do token de acesso
+            </summary>
+            <param name="usuario">ViewModel para pegar o email e senha do usuario</param>
+            <returns>Retorna um StatusCode(200) - Ok com o token de acesso</returns>
+        </member>
         <member name="T:healthclinic_webapi.Controllers.PlanoSaudeController">
             <summary>
             Controlador que armazena os endpoints da entidade PlanoSaude
@@ -177,6 +194,13 @@
             </summary>
             <param name="usuarioMedico">DTO do usuário do tipo médico</param>
             <returns>Retorna um StatusCode(201) - Created</returns>
+        </member>
+        <member name="M:healthclinic_webapi.Controllers.UsuarioController.GetById(System.Guid)">
+            <summary>
+            Endpoint que busca um usuário pelo seu ID
+            </summary>
+            <param name="id">ID do usuário que será buscado</param>
+            <returns>Retorna um StatusCode(200) - Ok com o objeto encontrado</returns>
         </member>
         <member name="T:healthclinic_webapi.Interfaces.IAdministradorRepository">
             <summary>

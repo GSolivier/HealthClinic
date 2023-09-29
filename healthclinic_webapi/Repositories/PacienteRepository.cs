@@ -57,7 +57,29 @@ namespace healthclinic_webapi.Repositories
         {
             try
             {
-                Paciente pacienteBuscado = _clinicContext.Paciente.FirstOrDefault(pa => pa.Id == id)!;
+                Paciente pacienteBuscado = _clinicContext.Paciente
+                    .Select(p => new Paciente
+                    {
+                        Endereco = p.Endereco,
+                        PlanoSaude = new PlanoSaude
+                        {
+                            Titulo = p.PlanoSaude!.Titulo
+                        },
+                        Usuario = new Usuario
+                        {
+                            Id = p.Usuario!.Id,
+                            Nome = p.Usuario.Nome,
+                            Email = p.Usuario.Email,
+                            Senha = p.Usuario.Senha,
+                            DataNascimento = p.Usuario.DataNascimento,
+                            CPF = p.Usuario.CPF,
+                            TipoUsuario = new TiposUsuario
+                            {
+                                Titulo = p.Usuario.TipoUsuario!.Titulo
+                            }
+                            
+                        }
+                    }).FirstOrDefault(pa => pa.Id == id)!;
 
                 if (pacienteBuscado == null)
                 {

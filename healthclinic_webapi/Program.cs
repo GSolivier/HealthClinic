@@ -29,28 +29,29 @@ builder.Services.AddAuthentication(options =>
         ValidateLifetime = true,
 
         //forma de criptografia e valida a chave de autenticação
-        IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("senai-eventplus-chave-autenticacao-webapi")),
+        IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("health-clinic-chave-autenticacao-webapi")),
 
         //Valida o tempo de expiração do token
-        ClockSkew = TimeSpan.FromMinutes(5),
+        ClockSkew = TimeSpan.FromMinutes(10),
 
         //nome do audience (para onde está indo)
-        ValidIssuer = "eventplus_webapi",
+        ValidIssuer = "healthclinic_webapi",
 
-        ValidAudience = "eventplus_webapi"
+        ValidAudience = "healthclinic_webapi"
     };
 });
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
+
 //adiciona o gerador do swagger á coleção de serviços
 builder.Services.AddSwaggerGen(options =>
 {
     options.SwaggerDoc("v1", new OpenApiInfo
     {
         Version = "v1",
-        Title = "API EventPlus",
-        Description = "Uma WEB API para o gerenciamento do site de eventos EventPlus",
+        Title = "API HealthClinic",
+        Description = "Uma WEB API para o gerenciamento de clinicas",
         Contact = new OpenApiContact
         {
             Name = "Guilherme Sousa Oliveira",
@@ -106,9 +107,9 @@ app.UseSwaggerUI(options =>
 
 app.UseHttpsRedirection();
 
-app.UseAuthorization();
-
 app.UseAuthentication();
+
+app.UseAuthorization();
 
 app.MapControllers();
 
