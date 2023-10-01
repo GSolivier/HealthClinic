@@ -81,6 +81,23 @@
             <param name="usuario">ViewModel para pegar o email e senha do usuario</param>
             <returns>Retorna um StatusCode(200) - Ok com o token de acesso</returns>
         </member>
+        <member name="T:healthclinic_webapi.Controllers.PacienteController">
+            <summary>
+            Controlador que armazena os Ednpoiints da entidade Paciente
+            </summary>
+        </member>
+        <member name="M:healthclinic_webapi.Controllers.PacienteController.#ctor">
+            <summary>
+            Construtor que instancia a Repository
+            </summary>
+        </member>
+        <member name="M:healthclinic_webapi.Controllers.PacienteController.GetById(System.Guid)">
+            <summary>
+            Endpoint que acessa o método BuscarPorId no PacienteRepository
+            </summary>
+            <param name="id">ID do paciente que será buscado</param>
+            <returns>Retorna o objeto encotnrado</returns>
+        </member>
         <member name="T:healthclinic_webapi.Controllers.PlanoSaudeController">
             <summary>
             Controlador que armazena os endpoints da entidade PlanoSaude

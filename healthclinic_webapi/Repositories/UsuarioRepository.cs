@@ -108,6 +108,7 @@ namespace healthclinic_webapi.Repositories
                 Usuario usuarioBuscado = _clinicContext.Usuario
                     .Select(u => new Usuario
                     {
+                        Id = u.Id,
                         Nome = u.Nome,
                         Email = u.Email,
                         DataNascimento = u.DataNascimento,

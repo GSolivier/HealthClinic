@@ -167,7 +167,7 @@ namespace healthclinic_webapi.Controllers
         /// </summary>
         /// <param name="id">ID do usuário que será buscado</param>
         /// <returns>Retorna um StatusCode(200) - Ok com o objeto encontrado</returns>
-        [HttpGet]
+        [HttpGet("{id}")]
         public IActionResult GetById(Guid id)
         {
             try
