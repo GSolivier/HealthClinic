@@ -12,70 +12,70 @@ namespace healthclinic_webapi.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Paciente_Prontuario_IdProntuario",
-                table: "Paciente");
+                name: "FK_Consulta_Feedback_IdFeedback",
+                table: "Consulta");
 
             migrationBuilder.DropIndex(
-                name: "IX_Paciente_IdProntuario",
-                table: "Paciente");
+                name: "IX_Consulta_IdFeedback",
+                table: "Consulta");
 
             migrationBuilder.DropColumn(
-                name: "IdProntuario",
-                table: "Paciente");
+                name: "IdFeedback",
+                table: "Consulta");
 
             migrationBuilder.AddColumn<Guid>(
-                name: "IdPaciente",
-                table: "Prontuario",
+                name: "IdConsulta",
+                table: "Feedback",
                 type: "uniqueidentifier",
                 nullable: false,
                 defaultValue: new Guid("00000000-0000-0000-0000-000000000000"));
 
             migrationBuilder.CreateIndex(
-                name: "IX_Prontuario_IdPaciente",
-                table: "Prontuario",
-                column: "IdPaciente");
+                name: "IX_Feedback_IdConsulta",
+                table: "Feedback",
+                column: "IdConsulta");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Prontuario_Paciente_IdPaciente",
-                table: "Prontuario",
-                column: "IdPaciente",
-                principalTable: "Paciente",
+                name: "FK_Feedback_Consulta_IdConsulta",
+                table: "Feedback",
+                column: "IdConsulta",
+                principalTable: "Consulta",
                 principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
+                onDelete: ReferentialAction.NoAction);
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Prontuario_Paciente_IdPaciente",
-                table: "Prontuario");
+                name: "FK_Feedback_Consulta_IdConsulta",
+                table: "Feedback");
 
             migrationBuilder.DropIndex(
-                name: "IX_Prontuario_IdPaciente",
-                table: "Prontuario");
+                name: "IX_Feedback_IdConsulta",
+                table: "Feedback");
 
             migrationBuilder.DropColumn(
-                name: "IdPaciente",
-                table: "Prontuario");
+                name: "IdConsulta",
+                table: "Feedback");
 
             migrationBuilder.AddColumn<Guid>(
-                name: "IdProntuario",
-                table: "Paciente",
+                name: "IdFeedback",
+                table: "Consulta",
                 type: "uniqueidentifier",
                 nullable: false,
                 defaultValue: new Guid("00000000-0000-0000-0000-000000000000"));
 
             migrationBuilder.CreateIndex(
-                name: "IX_Paciente_IdProntuario",
-                table: "Paciente",
-                column: "IdProntuario");
+                name: "IX_Consulta_IdFeedback",
+                table: "Consulta",
+                column: "IdFeedback");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Paciente_Prontuario_IdProntuario",
-                table: "Paciente",
-                column: "IdProntuario",
-                principalTable: "Prontuario",
+                name: "FK_Consulta_Feedback_IdFeedback",
+                table: "Consulta",
+                column: "IdFeedback",
+                principalTable: "Feedback",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Cascade);
         }

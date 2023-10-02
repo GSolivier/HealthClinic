@@ -4,8 +4,8 @@
   "senha": "123456paciente",
   "dataNascimento": "2002-07-13",
   "cpf": "12345678909",
-  "idTipoUsuario": "7A2E08ED-4FDD-4E0B-94C8-DAB1A5C8FCDA",
-  "idPlanoSaude": "638479FF-0095-4B2F-8C8C-DCE2B11FD488",
+  "idTipoUsuario": "4EE109E9-27F5-44F1-A212-CA54C86403A6",
+  "idPlanoSaude": "E650D907-B637-4771-A31B-3EA606EA49E2",
   "endereco": "Rua Florence, 899 - Jardim Helena"
 }
 
@@ -15,7 +15,7 @@
   "senha": "gui123456",
   "dataNascimento": "2002-04-26",
   "cpf": "42634177801",
-  "idTipoUsuario": "07651F7C-EC23-41BB-A9DC-DF9C15ACA857",
+  "idTipoUsuario": "D7A25681-1C09-46D0-BD45-7CF524769DC4",
   "cargo": "Gerente de TI"
 }
 
@@ -25,8 +25,8 @@
   "senha": "medico123456",
   "dataNascimento": "2004-05-25",
   "cpf": "1234567890",
-  "idTipoUsuario": "8509709F-ECF8-4FAD-968D-AFFAAADF47E0",
-  "idClinica": "322C2516-0A3A-4035-8B28-CD2D6A229FC5",
-  "idEspecialidade": "DCEA91C9-A645-4648-8914-4E9F377291F0",
+  "idTipoUsuario": "47BFCABB-5BAD-488E-A79A-C62F9B1B8632",
+  "idClinica": "3286892B-3954-450E-A771-5097E483998E",
+  "idEspecialidade": "8F18AEDD-554E-4DAD-B5EF-A0E551D28E19",
   "crm": "1234"
 }

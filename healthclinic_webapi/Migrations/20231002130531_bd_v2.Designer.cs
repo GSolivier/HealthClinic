@@ -12,8 +12,8 @@ using healthclinic_webapi.Contexts;
 namespace healthclinic_webapi.Migrations
 {
     [DbContext(typeof(ClinicContext))]
-    [Migration("20230927112222_bd_v1")]
-    partial class bd_v1
+    [Migration("20231002130531_bd_v2")]
+    partial class bd_v2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -97,9 +97,6 @@ namespace healthclinic_webapi.Migrations
                     b.Property<Guid>("IdAdministrador")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("IdFeedback")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<Guid>("IdMedico")
                         .HasColumnType("uniqueidentifier");
 
@@ -109,8 +106,6 @@ namespace healthclinic_webapi.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("IdAdministrador");
-
-                    b.HasIndex("IdFeedback");
 
                     b.HasIndex("IdMedico");
 
@@ -141,8 +136,10 @@ namespace healthclinic_webapi.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Descricao")
-                        .IsRequired()
                         .HasColumnType("TEXT");
+
+                    b.Property<Guid>("IdConsulta")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("IdPaciente")
                         .HasColumnType("uniqueidentifier");
@@ -151,6 +148,8 @@ namespace healthclinic_webapi.Migrations
                         .HasColumnType("BIT");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("IdConsulta");
 
                     b.HasIndex("IdPaciente");
 
@@ -200,17 +199,12 @@ namespace healthclinic_webapi.Migrations
                     b.Property<Guid>("IdPlanoSaude")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("IdProntuario")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<Guid>("IdUsuario")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
                     b.HasIndex("IdPlanoSaude");
-
-                    b.HasIndex("IdProntuario");
 
                     b.HasIndex("IdUsuario");
 
@@ -241,7 +235,12 @@ namespace healthclinic_webapi.Migrations
                     b.Property<string>("Descricao")
                         .HasColumnType("TEXT");
 
+                    b.Property<Guid>("IdPaciente")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("IdPaciente");
 
                     b.ToTable("Prontuario");
                 });
@@ -291,6 +290,9 @@ namespace healthclinic_webapi.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("Email")
+                        .IsUnique();
+
                     b.HasIndex("IdTipoUsuario");
 
                     b.ToTable("Usuario");
@@ -315,12 +317,6 @@ namespace healthclinic_webapi.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("healthclinic_webapi.Domains.Feedback", "Feedback")
-                        .WithMany()
-                        .HasForeignKey("IdFeedback")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("healthclinic_webapi.Domains.Medico", "Medico")
                         .WithMany()
                         .HasForeignKey("IdMedico")
@@ -335,8 +331,6 @@ namespace healthclinic_webapi.Migrations
 
                     b.Navigation("Administrador");
 
-                    b.Navigation("Feedback");
-
                     b.Navigation("Medico");
 
                     b.Navigation("Paciente");
@@ -344,11 +338,19 @@ namespace healthclinic_webapi.Migrations
 
             modelBuilder.Entity("healthclinic_webapi.Domains.Feedback", b =>
                 {
+                    b.HasOne("healthclinic_webapi.Domains.Consulta", "Consulta")
+                        .WithMany()
+                        .HasForeignKey("IdConsulta")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("healthclinic_webapi.Domains.Paciente", "Paciente")
                         .WithMany()
                         .HasForeignKey("IdPaciente")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Consulta");
 
                     b.Navigation("Paciente");
                 });
@@ -388,12 +390,6 @@ namespace healthclinic_webapi.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("healthclinic_webapi.Domains.Prontuario", "Prontuario")
-                        .WithMany()
-                        .HasForeignKey("IdProntuario")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("healthclinic_webapi.Domains.Usuario", "Usuario")
                         .WithMany()
                         .HasForeignKey("IdUsuario")
@@ -402,9 +398,18 @@ namespace healthclinic_webapi.Migrations
 
                     b.Navigation("PlanoSaude");
 
-                    b.Navigation("Prontuario");
-
                     b.Navigation("Usuario");
+                });
+
+            modelBuilder.Entity("healthclinic_webapi.Domains.Prontuario", b =>
+                {
+                    b.HasOne("healthclinic_webapi.Domains.Paciente", "Paciente")
+                        .WithMany()
+                        .HasForeignKey("IdPaciente")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Paciente");
                 });
 
             modelBuilder.Entity("healthclinic_webapi.Domains.Usuario", b =>

@@ -41,12 +41,5 @@ namespace healthclinic_webapi.Domains
 
         [ForeignKey(nameof(IdMedico))]
         public Medico? Medico { get; set; }
-
-        //ref.tabela Feedback
-        [Required(ErrorMessage = "O ID do Feedback é obrigatório")]
-        public Guid IdFeedback { get; set; }
-
-        [ForeignKey(nameof(IdFeedback))]
-        public Feedback? Feedback { get; set; }
     }
 }

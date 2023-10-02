@@ -94,9 +94,6 @@ namespace healthclinic_webapi.Migrations
                     b.Property<Guid>("IdAdministrador")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("IdFeedback")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<Guid>("IdMedico")
                         .HasColumnType("uniqueidentifier");
 
@@ -106,8 +103,6 @@ namespace healthclinic_webapi.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("IdAdministrador");
-
-                    b.HasIndex("IdFeedback");
 
                     b.HasIndex("IdMedico");
 
@@ -138,8 +133,10 @@ namespace healthclinic_webapi.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Descricao")
-                        .IsRequired()
                         .HasColumnType("TEXT");
+
+                    b.Property<Guid>("IdConsulta")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("IdPaciente")
                         .HasColumnType("uniqueidentifier");
@@ -148,6 +145,8 @@ namespace healthclinic_webapi.Migrations
                         .HasColumnType("BIT");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("IdConsulta");
 
                     b.HasIndex("IdPaciente");
 
@@ -315,12 +314,6 @@ namespace healthclinic_webapi.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("healthclinic_webapi.Domains.Feedback", "Feedback")
-                        .WithMany()
-                        .HasForeignKey("IdFeedback")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("healthclinic_webapi.Domains.Medico", "Medico")
                         .WithMany()
                         .HasForeignKey("IdMedico")
@@ -335,8 +328,6 @@ namespace healthclinic_webapi.Migrations
 
                     b.Navigation("Administrador");
 
-                    b.Navigation("Feedback");
-
                     b.Navigation("Medico");
 
                     b.Navigation("Paciente");
@@ -344,11 +335,19 @@ namespace healthclinic_webapi.Migrations
 
             modelBuilder.Entity("healthclinic_webapi.Domains.Feedback", b =>
                 {
+                    b.HasOne("healthclinic_webapi.Domains.Consulta", "Consulta")
+                        .WithMany()
+                        .HasForeignKey("IdConsulta")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("healthclinic_webapi.Domains.Paciente", "Paciente")
                         .WithMany()
                         .HasForeignKey("IdPaciente")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Consulta");
 
                     b.Navigation("Paciente");
                 });

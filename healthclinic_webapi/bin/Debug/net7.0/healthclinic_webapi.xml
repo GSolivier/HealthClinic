@@ -21,6 +21,29 @@
             <param name="clinica">Objeto que será cadastrado</param>
             <returns>Retorna um StatusCode(201) - Created</returns>
         </member>
+        <member name="T:healthclinic_webapi.Controllers.ConsultaController">
+            <summary>
+            Controlador com os endpoints da entidade Consulta
+            </summary>
+        </member>
+        <member name="M:healthclinic_webapi.Controllers.ConsultaController.#ctor">
+            <summary>
+            Construtor que instancia o objeto do repository
+            </summary>
+        </member>
+        <member name="M:healthclinic_webapi.Controllers.ConsultaController.Post(healthclinic_webapi.Domains.Consulta)">
+            <summary>
+            Endpoint que acessa o método cadastrar da ConsultaRepository
+            </summary>
+            <param name="consulta">objeto que será cadastrado</param>
+            <returns>Retorna um StatusCode(201) - Created</returns>
+        </member>
+        <member name="M:healthclinic_webapi.Controllers.ConsultaController.Get">
+            <summary>
+            Endpoint que acessa o método listar da ConsultaRepository
+            </summary>
+            <returns>Retorna a lista de objetos</returns>
+        </member>
         <member name="T:healthclinic_webapi.Controllers.EspecialidadeController">
             <summary>
             Controlador com os endpoints da entidade Especialidade
@@ -248,6 +271,57 @@
             </summary>
             <param name="clinica">Objeto que será cadastrado</param>
         </member>
+        <member name="T:healthclinic_webapi.Interfaces.IConsultaRepository">
+            <summary>
+            Interface que define os métodos da entidade Consulta
+            </summary>
+        </member>
+        <member name="M:healthclinic_webapi.Interfaces.IConsultaRepository.Cadastrar(healthclinic_webapi.Domains.Consulta)">
+            <summary>
+            Método para cadastrar uma nova consulta
+            </summary>
+            <param name="consulta">objeto que será cadastrado</param>
+        </member>
+        <member name="M:healthclinic_webapi.Interfaces.IConsultaRepository.Listar">
+            <summary>
+            Método para listar todas as consultas
+            </summary>
+            <returns>Retorna a lista de objetos</returns>
+        </member>
+        <member name="M:healthclinic_webapi.Interfaces.IConsultaRepository.ListarConsultaMedico(System.Guid)">
+            <summary>
+            Método para listar as consultas ligadas a um médico
+            </summary>
+            <param name="idMedico">ID do médico que terá as suas consultas listadas</param>
+            <returns>Retorna a lista de objetos</returns>
+        </member>
+        <member name="M:healthclinic_webapi.Interfaces.IConsultaRepository.ListarConsultaPaciente(System.Guid)">
+            <summary>
+            Método para listar as consultas ligada a um paciente
+            </summary>
+            <param name="idPaciente">ID do paciente que terá as suas consultas listadas</param>
+            <returns></returns>
+        </member>
+        <member name="M:healthclinic_webapi.Interfaces.IConsultaRepository.Atualizar(System.Guid,healthclinic_webapi.Domains.Consulta)">
+            <summary>
+            Método para atualizar uma consulta existente
+            </summary>
+            <param name="id">ID da consulta que será atualizada</param>
+            <param name="consulta">Objeto com os novos valores</param>
+        </member>
+        <member name="M:healthclinic_webapi.Interfaces.IConsultaRepository.Deletar(System.Guid)">
+            <summary>
+            Método para deletar uma consulta
+            </summary>
+            <param name="id">ID da consulta que será deletada</param>
+        </member>
+        <member name="M:healthclinic_webapi.Interfaces.IConsultaRepository.BuscarPorId(System.Guid)">
+            <summary>
+            Método para buscar uma consulta por ID
+            </summary>
+            <param name="id">ID da consulta que será buscada</param>
+            <returns>Retorna o objeto encontrado</returns>
+        </member>
         <member name="T:healthclinic_webapi.Interfaces.IEspecialidadeRepository">
             <summary>
             Interface que define os métodos da entidade Especialidade
@@ -283,6 +357,30 @@
             Método que busca uma especialidade
             </summary>
             <param name="id">ID da especialidade que será buscada</param>
+            <returns>Retorna o objeto encontrado</returns>
+        </member>
+        <member name="T:healthclinic_webapi.Interfaces.IFeedbackRepository">
+            <summary>
+            Interdace que define os métodos da entidade Feedback
+            </summary>
+        </member>
+        <member name="M:healthclinic_webapi.Interfaces.IFeedbackRepository.Cadastrar(healthclinic_webapi.Domains.Feedback)">
+            <summary>
+            Cadastra um novo Feedback
+            </summary>
+            <param name="feedback">objeto com os atributos a serem cadastrados</param>
+        </member>
+        <member name="M:healthclinic_webapi.Interfaces.IFeedbackRepository.Deletar(System.Guid)">
+            <summary>
+            Método para deletar um FeedBack
+            </summary>
+            <param name="id">ID do feedback que será deletado</param>
+        </member>
+        <member name="M:healthclinic_webapi.Interfaces.IFeedbackRepository.BuscarPorId(System.Guid)">
+            <summary>
+            Método para buscar um feedback pelo seu ID
+            </summary>
+            <param name="id">ID do feedback que será buscado</param>
             <returns>Retorna o objeto encontrado</returns>
         </member>
         <member name="T:healthclinic_webapi.Interfaces.IMedicoRepository">
@@ -459,18 +557,6 @@
         <member name="M:healthclinic_webapi.Migrations.bd_v2.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
-        <member name="T:healthclinic_webapi.Migrations.bd_v3">
-            <inheritdoc />
-        </member>
-        <member name="M:healthclinic_webapi.Migrations.bd_v3.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:healthclinic_webapi.Migrations.bd_v3.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:healthclinic_webapi.Migrations.bd_v3.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
-            <inheritdoc />
-        </member>
         <member name="T:healthclinic_webapi.Repositories.AdministradorRepository">
             <summary>
             Repository que herda os métodos da Interdface IAdministradorRepository
@@ -509,6 +595,61 @@
             Método que cadastra uma nova clinica
             </summary>
             <param name="clinica">Objeto que será cadastrado</param>
+        </member>
+        <member name="T:healthclinic_webapi.Repositories.ConsultaRepository">
+            <summary>
+            Repositório que herda os métodos da interface IConsultaRepository
+            </summary>
+        </member>
+        <member name="M:healthclinic_webapi.Repositories.ConsultaRepository.#ctor">
+            <summary>
+            Construtor que instancia o objeto da context
+            </summary>
+        </member>
+        <member name="M:healthclinic_webapi.Repositories.ConsultaRepository.Cadastrar(healthclinic_webapi.Domains.Consulta)">
+            <summary>
+            Método para cadastrar uma nova consulta
+            </summary>
+            <param name="consulta">objeto que será cadastrado</param>
+        </member>
+        <member name="M:healthclinic_webapi.Repositories.ConsultaRepository.Listar">
+            <summary>
+            Método para listar todas as consultas
+            </summary>
+            <returns>Retorna a lista de objetos</returns>
+        </member>
+        <member name="M:healthclinic_webapi.Repositories.ConsultaRepository.ListarConsultaMedico(System.Guid)">
+            <summary>
+            Método para listar as consultas ligadas a um médico
+            </summary>
+            <param name="idMedico">ID do médico que terá as suas consultas listadas</param>
+            <returns>Retorna a lista de objetos</returns>
+        </member>
+        <member name="M:healthclinic_webapi.Repositories.ConsultaRepository.ListarConsultaPaciente(System.Guid)">
+            <summary>
+            Método para listar as consultas ligada a um paciente
+            </summary>
+            <param name="idPaciente">ID do paciente que terá as suas consultas listadas</param>
+        </member>
+        <member name="M:healthclinic_webapi.Repositories.ConsultaRepository.Atualizar(System.Guid,healthclinic_webapi.Domains.Consulta)">
+            <summary>
+            Método para atualizar uma consulta existente
+            </summary>
+            <param name="id">ID da consulta que será atualizada</param>
+            <param name="consulta">Objeto com os novos valores</param>
+        </member>
+        <member name="M:healthclinic_webapi.Repositories.ConsultaRepository.Deletar(System.Guid)">
+            <summary>
+            Método para deletar uma consulta
+            </summary>
+            <param name="id">ID da consulta que será deletada</param>
+        </member>
+        <member name="M:healthclinic_webapi.Repositories.ConsultaRepository.BuscarPorId(System.Guid)">
+            <summary>
+            Método para buscar uma consulta por ID
+            </summary>
+            <param name="id">ID da consulta que será buscada</param>
+            <returns>Retorna o objeto encontrado</returns>
         </member>
         <member name="T:healthclinic_webapi.Repositories.EspecialidadeRepository">
             <summary>
@@ -551,6 +692,22 @@
             </summary>
             <param name="id">ID da especialidade que será buscada</param>
             <returns>Retorna o objeto encontrado</returns>
+        </member>
+        <member name="T:healthclinic_webapi.Repositories.FeedbackRepository">
+            <summary>
+            Repository que herda os métodos da interface IFeedbackRepository
+            </summary>
+        </member>
+        <member name="M:healthclinic_webapi.Repositories.FeedbackRepository.#ctor">
+            <summary>
+            Construtor que instancia o objeto da context
+            </summary>
+        </member>
+        <member name="M:healthclinic_webapi.Repositories.FeedbackRepository.Cadastrar(healthclinic_webapi.Domains.Feedback)">
+            <summary>
+            Cadastra um novo Feedback
+            </summary>
+            <param name="feedback">objeto com os atributos a serem cadastrados</param>
         </member>
         <member name="T:healthclinic_webapi.Repositories.MedicoRepository">
             <summary>

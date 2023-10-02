@@ -9,7 +9,6 @@ namespace healthclinic_webapi.Domains
         [Key]
         public Guid Id { get; set; }
 
-        [Required(ErrorMessage = "A descrição é obrigatória")]
         [Column(TypeName = "TEXT")]
         public string? Descricao { get; set; }
 
@@ -23,5 +22,14 @@ namespace healthclinic_webapi.Domains
 
         [ForeignKey(nameof(IdPaciente))]
         public Paciente? Paciente { get; set; }
+
+        //ref.tabela Consulta
+
+        [Required(ErrorMessage = "O ID do Consulta é obrigatório")]
+        public Guid IdConsulta { get; set; }
+
+        [ForeignKey(nameof(IdConsulta))]
+        public Consulta? Consulta { get; set; }
+
     }
 }

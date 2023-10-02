@@ -12,8 +12,8 @@ using healthclinic_webapi.Contexts;
 namespace healthclinic_webapi.Migrations
 {
     [DbContext(typeof(ClinicContext))]
-    [Migration("20230929001658_bd_v3")]
-    partial class bd_v3
+    [Migration("20231002122437_bd_v1")]
+    partial class bd_v1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -141,7 +141,6 @@ namespace healthclinic_webapi.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Descricao")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<Guid>("IdPaciente")
