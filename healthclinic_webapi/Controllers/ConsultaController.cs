@@ -128,7 +128,7 @@ namespace healthclinic_webapi.Controllers
         /// </summary>
         /// <param name="id">ID da consulta que será deletada</param>
         /// <returns>Retorna um StatusCode(200) Ok</returns>
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult Delete(Guid id)
         {
             try

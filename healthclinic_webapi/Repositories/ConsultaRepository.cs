@@ -299,6 +299,8 @@ namespace healthclinic_webapi.Repositories
             {
                 Consulta consultaBuscada = BuscarPorId(id);
 
+                _feedbackRepository.Deletar(consultaBuscada.Id);
+
                 _clinicContext.Consulta.Remove(consultaBuscada);
 
                 _clinicContext.SaveChanges();

@@ -38,14 +38,50 @@ namespace healthclinic_webapi.Repositories
             }
         }
 
-        public void Deletar(Guid id)
+        /// <summary>
+        /// Método para deletar um FeedBack
+        /// </summary>
+        /// <param name="idConsulta">ID da consulta que esse feedback esta ligado que será deletado</param>
+        public void Deletar(Guid idConsulta)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Feedback feedbackBuscado = BuscarPorIdConsulta(idConsulta);
+
+                _clinicContext.Feedback.Remove(feedbackBuscado);
+
+                _clinicContext.SaveChanges();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
-        public Feedback BuscarPorId(Guid id)
+        /// <summary>
+        /// Método para buscar um feedback pelo seu ID
+        /// </summary>
+        /// <param name="idConsulta">ID da consulta que esse feedback esta ligado que será buscado</param>
+        /// <returns>Retorna o objeto encontrado</returns>
+        public Feedback BuscarPorIdConsulta(Guid idConsulta)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Feedback feedbackBuscado = _clinicContext.Feedback.FirstOrDefault(fb => fb.IdConsulta == idConsulta)!;
+
+                if (feedbackBuscado == null)
+                {
+                    throw new Exception("O feedback não existe");
+                }
+
+                return feedbackBuscado;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
 

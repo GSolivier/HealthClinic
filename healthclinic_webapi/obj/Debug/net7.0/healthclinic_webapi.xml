@@ -4,6 +4,48 @@
         <name>healthclinic_webapi</name>
     </assembly>
     <members>
+        <member name="T:healthclinic_webapi.Contexts.ClinicContext">
+            <summary>
+            Contexto para realizar a conexão com o banco de dados
+            </summary>
+        </member>
+        <member name="P:healthclinic_webapi.Contexts.ClinicContext.Administrador">
+            <summary>
+            Instancia da tabela Administrador
+            </summary>
+        </member>
+        <member name="P:healthclinic_webapi.Contexts.ClinicContext.Clinica">
+            <summary>
+            Instancia da tabela Clinica
+            </summary>
+        </member>
+        <member name="P:healthclinic_webapi.Contexts.ClinicContext.Consulta">
+            <summary>
+            Instancia da tabela Consulta
+            </summary>
+        </member>
+        <member name="P:healthclinic_webapi.Contexts.ClinicContext.Especialidade">
+            <summary>
+            Instancia da tabela
+            </summary>
+        </member>
+        <member name="T:healthclinic_webapi.Controllers.AdministradorController">
+            <summary>
+            Controlador que tem os enpoints da entidade Administrador
+            </summary>
+        </member>
+        <member name="M:healthclinic_webapi.Controllers.AdministradorController.#ctor">
+            <summary>
+            Construtor que instancia o objeto da Repository
+            </summary>
+        </member>
+        <member name="M:healthclinic_webapi.Controllers.AdministradorController.GetById(System.Guid)">
+            <summary>
+            Enpoint que acessa o método BuscarPorId do AdministradorRepository
+            </summary>
+            <param name="id">ID do paciente que sera buscado</param>
+            <returns>Retorna um StatusCode(200) Ok com o objeto retornado</returns>
+        </member>
         <member name="T:healthclinic_webapi.Controllers.ClinicaController">
             <summary>
             Controlador com os endpoints da entidade Clinica
@@ -43,6 +85,35 @@
             Endpoint que acessa o método listar da ConsultaRepository
             </summary>
             <returns>Retorna a lista de objetos</returns>
+        </member>
+        <member name="M:healthclinic_webapi.Controllers.ConsultaController.GetByIdPaciente(System.Guid)">
+            <summary>
+            Endpoint que acessa o método ListarConsultaPaciente na ConsultaRepository
+            </summary>
+            <param name="idPaciente">ID do paciente que terá as suas consultas listadas</param>
+            <returns>Retorna as consultas daquele paciente</returns>
+        </member>
+        <member name="M:healthclinic_webapi.Controllers.ConsultaController.GetByIdMedico(System.Guid)">
+            <summary>
+            Endpoint que acessa o método ListarConsultaMedico na ConsultaRepository
+            </summary>
+            <param name="idMedico">ID do medico que terá as suas consultas listadas</param>
+            <returns>Retorna as consultas daquele medico</returns>
+        </member>
+        <member name="M:healthclinic_webapi.Controllers.ConsultaController.Put(System.Guid,healthclinic_webapi.Domains.Consulta)">
+            <summary>
+            Endpoint que acessa o método Atualizar da ConsultaRepository
+            </summary>
+            <param name="id">ID da consulta que será atualizada</param>
+            <param name="consulta">Objeto com os novos valores</param>
+            <returns>Retorna um StatusCode(200) - Ok</returns>
+        </member>
+        <member name="M:healthclinic_webapi.Controllers.ConsultaController.Delete(System.Guid)">
+            <summary>
+            Endpoint que acessa o método Deletar do ConsultaRepository
+            </summary>
+            <param name="id">ID da consulta que será deletada</param>
+            <returns>Retorna um StatusCode(200) Ok</returns>
         </member>
         <member name="T:healthclinic_webapi.Controllers.EspecialidadeController">
             <summary>
@@ -87,6 +158,23 @@
             <param name="id">ID do usuário que será deletada</param>
             <returns>Retorna um StatusCode(204) - NoContent</returns>
         </member>
+        <member name="T:healthclinic_webapi.Controllers.FeedbackController">
+            <summary>
+            Controlador com os endpoints da entidade Feedback
+            </summary>
+        </member>
+        <member name="M:healthclinic_webapi.Controllers.FeedbackController.#ctor">
+            <summary>
+            Construtor que instancia o objeto da repository
+            </summary>
+        </member>
+        <member name="M:healthclinic_webapi.Controllers.FeedbackController.GetByIdConsulta(System.Guid)">
+            <summary>
+            Endpoint que acessa o método BuscarPorIdConsulta do FeedbackRepository
+            </summary>
+            <param name="idConsulta">ID da consulta que o feedbakc será buscado</param>
+            <returns>Retorna um StatusCode(200) - Ok</returns>
+        </member>
         <member name="T:healthclinic_webapi.Controllers.LoginController">
             <summary>
             Controlador para armazenar as lógicas de login
@@ -103,6 +191,23 @@
             </summary>
             <param name="usuario">ViewModel para pegar o email e senha do usuario</param>
             <returns>Retorna um StatusCode(200) - Ok com o token de acesso</returns>
+        </member>
+        <member name="T:healthclinic_webapi.Controllers.MedicoController">
+            <summary>
+            Controlador que tem os Endpoints da entidade Medico
+            </summary>
+        </member>
+        <member name="M:healthclinic_webapi.Controllers.MedicoController.#ctor">
+            <summary>
+            Construtor que instancia o objeto da repository
+            </summary>
+        </member>
+        <member name="M:healthclinic_webapi.Controllers.MedicoController.GetById(System.Guid)">
+            <summary>
+            Endpoint que acessa o método BuscarPorId da Repository MedicoRepository
+            </summary>
+            <param name="id">ID do médico que sera buscado</param>
+            <returns>Retorna um StatusCode(200) Ok</returns>
         </member>
         <member name="T:healthclinic_webapi.Controllers.PacienteController">
             <summary>
@@ -165,6 +270,24 @@
             </summary>
             <param name="id">ID do objeto que será deletado</param>
             <returns>Retorna um StatusCode(204) - NoCOntent</returns>
+        </member>
+        <member name="T:healthclinic_webapi.Controllers.ProntuarioController">
+            <summary>
+            Controlador que possue os endpoints da Entidade Prontuario
+            </summary>
+        </member>
+        <member name="M:healthclinic_webapi.Controllers.ProntuarioController.#ctor">
+            <summary>
+            Controlador que instancia a classe do repository
+            </summary>
+        </member>
+        <member name="M:healthclinic_webapi.Controllers.ProntuarioController.Put(System.Guid,healthclinic_webapi.Domains.Prontuario)">
+            <summary>
+            Endpoint que acessa o método Atualizar da ProntuarioRepository
+            </summary>
+            <param name="idPaciente">ID do paciente que terá o seu prontuário atualizado</param>
+            <param name="prontuario">Objeto com os novos valores</param>
+            <returns>Retorna um StatusCode(200) - Ok</returns>
         </member>
         <member name="T:healthclinic_webapi.Controllers.TiposUsuarioController">
             <summary>
@@ -374,13 +497,13 @@
             <summary>
             Método para deletar um FeedBack
             </summary>
-            <param name="id">ID do feedback que será deletado</param>
+            <param name="idConsulta">ID da consulta que esse feedback esta ligado que será deletado</param>
         </member>
-        <member name="M:healthclinic_webapi.Interfaces.IFeedbackRepository.BuscarPorId(System.Guid)">
+        <member name="M:healthclinic_webapi.Interfaces.IFeedbackRepository.BuscarPorIdConsulta(System.Guid)">
             <summary>
             Método para buscar um feedback pelo seu ID
             </summary>
-            <param name="id">ID do feedback que será buscado</param>
+            <param name="idConsulta">ID da consulta que esse feedback esta ligado que será buscado</param>
             <returns>Retorna o objeto encontrado</returns>
         </member>
         <member name="T:healthclinic_webapi.Interfaces.IMedicoRepository">
@@ -708,6 +831,19 @@
             Cadastra um novo Feedback
             </summary>
             <param name="feedback">objeto com os atributos a serem cadastrados</param>
+        </member>
+        <member name="M:healthclinic_webapi.Repositories.FeedbackRepository.Deletar(System.Guid)">
+            <summary>
+            Método para deletar um FeedBack
+            </summary>
+            <param name="idConsulta">ID da consulta que esse feedback esta ligado que será deletado</param>
+        </member>
+        <member name="M:healthclinic_webapi.Repositories.FeedbackRepository.BuscarPorIdConsulta(System.Guid)">
+            <summary>
+            Método para buscar um feedback pelo seu ID
+            </summary>
+            <param name="idConsulta">ID da consulta que esse feedback esta ligado que será buscado</param>
+            <returns>Retorna o objeto encontrado</returns>
         </member>
         <member name="T:healthclinic_webapi.Repositories.MedicoRepository">
             <summary>

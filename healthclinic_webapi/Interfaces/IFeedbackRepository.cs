@@ -16,14 +16,14 @@ namespace healthclinic_webapi.Interfaces
         /// <summary>
         /// Método para deletar um FeedBack
         /// </summary>
-        /// <param name="id">ID do feedback que será deletado</param>
-        void Deletar(Guid id);
+        /// <param name="idConsulta">ID da consulta que esse feedback esta ligado que será deletado</param>
+        void Deletar(Guid idConsulta);
 
         /// <summary>
         /// Método para buscar um feedback pelo seu ID
         /// </summary>
-        /// <param name="id">ID do feedback que será buscado</param>
+        /// <param name="idConsulta">ID da consulta que esse feedback esta ligado que será buscado</param>
         /// <returns>Retorna o objeto encontrado</returns>
-        Feedback BuscarPorId(Guid id);
+        Feedback BuscarPorIdConsulta(Guid idConsulta);
     }
 }

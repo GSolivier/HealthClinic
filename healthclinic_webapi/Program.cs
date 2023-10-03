@@ -4,6 +4,7 @@ using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
+#pragma warning disable CS1591
 // Add services to the container.
 builder.Services.AddControllers();
 

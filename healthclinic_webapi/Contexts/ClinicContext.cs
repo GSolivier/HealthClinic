@@ -3,12 +3,29 @@ using Microsoft.EntityFrameworkCore;
 
 namespace healthclinic_webapi.Contexts
 {
-
+    /// <summary>
+    /// Contexto para realizar a conexão com o banco de dados
+    /// </summary>
     public class ClinicContext : DbContext
     {
+        /// <summary>
+        /// Instancia da tabela Administrador
+        /// </summary>
         public DbSet<Administrador> Administrador { get; set; }
+
+        /// <summary>
+        /// Instancia da tabela Clinica
+        /// </summary>
         public DbSet<Clinica> Clinica { get; set; }
+
+        /// <summary>
+        /// Instancia da tabela Consulta
+        /// </summary>
         public DbSet<Consulta> Consulta { get; set; }
+
+        /// <summary>
+        /// Instancia da tabela
+        /// </summary>
         public DbSet<Especialidade> Especialidade { get; set; }
         public DbSet<Feedback> Feedback { get; set; }
         public DbSet<Medico> Medico { get; set; }
