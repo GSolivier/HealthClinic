@@ -1,6 +1,7 @@
 ﻿using healthclinic_webapi.Domains;
 using healthclinic_webapi.Interfaces;
 using healthclinic_webapi.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -29,6 +30,7 @@ namespace healthclinic_webapi.Controllers
         /// <param name="clinica">Objeto que será cadastrado</param>
         /// <returns>Retorna um StatusCode(201) - Created</returns>
         [HttpPost]
+        //[Authorize(Roles = "Administrador")]
         public IActionResult Post(Clinica clinica)
         {
             try

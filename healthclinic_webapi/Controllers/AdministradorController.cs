@@ -1,5 +1,6 @@
 ﻿using healthclinic_webapi.Interfaces;
 using healthclinic_webapi.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -29,6 +30,7 @@ namespace healthclinic_webapi.Controllers
         /// <param name="id">ID do paciente que sera buscado</param>
         /// <returns>Retorna um StatusCode(200) Ok com o objeto retornado</returns>
         [HttpGet("{id}")]
+        //[Authorize(Roles = "Administrador")]
         public IActionResult GetById(Guid id)
         {
             try

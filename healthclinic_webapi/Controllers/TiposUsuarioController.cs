@@ -31,6 +31,7 @@ namespace healthclinic_webapi.Controllers
         /// <param name="tiposUsuario">Objeto com os atributos a serem cadastrados</param>
         /// <returns>Retorna um StatusCode(201) - Created</returns>
         [HttpPost]
+        //[Authorize(Roles = "Administrador")]
         public IActionResult Post(TiposUsuario tiposUsuario)
         {
             try
@@ -51,7 +52,7 @@ namespace healthclinic_webapi.Controllers
         /// </summary>
         /// <returns>Retorna um StatusCode(200) - Ok com a lista de objetos</returns>
         [HttpGet]
-        [Authorize(Roles = "Administrador")]
+        //[Authorize(Roles = "Administrador")]
         public IActionResult Get()
         {
             try
@@ -72,6 +73,7 @@ namespace healthclinic_webapi.Controllers
         /// <param name="tiposUsuario">Objeto com as novas informações</param>
         /// <returns>Retorna um StatusCode(200) - Ok</returns>
         [HttpPut("{id}")]
+        //[Authorize(Roles = "Administrador")]
         public IActionResult Put(Guid id, TiposUsuario tiposUsuario)
         {
             try
@@ -93,6 +95,7 @@ namespace healthclinic_webapi.Controllers
         /// <param name="id">ID do tipo de usuário que será deletado</param>
         /// <returns>Retorna um StatusCode(204) - NoContent</returns>
         [HttpDelete("{id}")]
+        //[Authorize(Roles = "Administrador")]
         public IActionResult Delete(Guid id)
         {
             try

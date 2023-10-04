@@ -34,6 +34,7 @@ namespace healthclinic_webapi.Controllers
         /// <param name="usuario">ViewModel para pegar o email e senha do usuario</param>
         /// <returns>Retorna um StatusCode(200) - Ok com o token de acesso</returns>
         [HttpPost]
+        //[Authorize(Roles = "Administrador, Paciente, Médico")]
         public IActionResult Login(LoginViewModel usuario)
         {
             try

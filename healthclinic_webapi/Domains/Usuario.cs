@@ -21,6 +21,7 @@ namespace healthclinic_webapi.Domains
 
         [Column(TypeName = "VARCHAR(60)")]
         [Required(ErrorMessage = "A senha é obrigatória")]
+        [StringLength(60, MinimumLength = 5, ErrorMessage = "A senha deverá conter entre 5 e 60 caracteres")]
         public string? Senha { get; set; }
 
         [Column(TypeName = "DATE")]
@@ -29,6 +30,7 @@ namespace healthclinic_webapi.Domains
 
         [Column(TypeName = "VARCHAR(11)")]
         [Required(ErrorMessage = "O CPF é obrigatório")]
+        [StringLength(11, MinimumLength = 11, ErrorMessage = "O CPF deverá conter 11 caracteres para ser cadastrado")]
         public string? CPF { get; set; }
 
         //ref.Tabela TiposUsuario

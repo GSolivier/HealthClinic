@@ -20,6 +20,13 @@ namespace healthclinic_webapi.Interfaces
         void Deletar(Guid idConsulta);
 
         /// <summary>
+        /// Método para atualizar um feedback nulo
+        /// </summary>
+        /// <param name="idConsulta">ID da consulta daquele feedback</param>
+        /// <param name="feedback">Comentario do paciente sobre a consulta</param>
+        void Atualizar (Guid idConsulta, string feedback);
+
+        /// <summary>
         /// Método para buscar um feedback pelo seu ID
         /// </summary>
         /// <param name="idConsulta">ID da consulta que esse feedback esta ligado que será buscado</param>

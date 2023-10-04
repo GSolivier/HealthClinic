@@ -29,6 +29,7 @@ namespace healthclinic_webapi.Controllers
         /// <param name="id">ID do médico que sera buscado</param>
         /// <returns>Retorna um StatusCode(200) Ok</returns>
         [HttpGet("{id}")]
+        //[Authorize(Roles = "Administrador")]
         public IActionResult GetById(Guid id)
         {
             try

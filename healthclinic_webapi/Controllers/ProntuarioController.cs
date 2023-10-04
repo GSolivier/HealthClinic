@@ -1,6 +1,7 @@
 ﻿using healthclinic_webapi.Domains;
 using healthclinic_webapi.Interfaces;
 using healthclinic_webapi.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -31,6 +32,7 @@ namespace healthclinic_webapi.Controllers
         /// <param name="prontuario">Objeto com os novos valores</param>
         /// <returns>Retorna um StatusCode(200) - Ok</returns>
         [HttpPut("{idPaciente}")]
+        //[Authorize(Roles = "Administrador, Médico")]
         public IActionResult Put(Guid idPaciente, Prontuario prontuario)
         {
             try

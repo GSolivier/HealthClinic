@@ -1,6 +1,7 @@
 ﻿using healthclinic_webapi.Contexts;
 using healthclinic_webapi.Domains;
 using healthclinic_webapi.Interfaces;
+using System.Runtime.Intrinsics.Arm;
 
 namespace healthclinic_webapi.Repositories
 {
@@ -48,7 +49,33 @@ namespace healthclinic_webapi.Repositories
         {
             try
             {
-                Medico medicoBuscado = _clinicContext.Medico.FirstOrDefault(med => med.Id == id)!;
+                Medico medicoBuscado = _clinicContext.Medico.
+                    Select( med => new Medico
+                    {
+                        Id = med.Id,
+                        CRM = med.CRM,
+                        IdClinica = med.IdClinica,
+                        Clinica = new Clinica
+                        {
+                            HoraInicio = med.Clinica!.HoraInicio,
+                            HoraFinal = med.Clinica!.HoraFinal,
+                            Endereco = med.Clinica!.Endereco,
+                            NomeFantasia = med.Clinica!.NomeFantasia
+                        },
+
+                        IdUsuario = med.IdUsuario,
+                        Usuario = new Usuario
+                        {
+                            Nome = med.Usuario!.Nome,
+                            Email = med.Usuario!.Email,
+                            IdTipoUsuario = med.Usuario!.IdTipoUsuario
+                        },
+
+                        IdEspecialidade = med.IdEspecialidade,
+                        Especialidade = med.Especialidade
+                    }
+
+                    ).FirstOrDefault(med => med.Id == id)!;
 
                 if (medicoBuscado == null)
                 {

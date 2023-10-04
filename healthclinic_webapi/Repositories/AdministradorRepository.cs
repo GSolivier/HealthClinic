@@ -47,7 +47,21 @@ namespace healthclinic_webapi.Repositories
         {
             try
             {
-                Administrador administradorBuscado = _clinicContext.Administrador.FirstOrDefault(adm => adm.Id == id)!;
+                Administrador administradorBuscado = _clinicContext.Administrador.
+                    Select(adm => new Administrador
+                    {
+                        Id = adm.Id,
+                        Cargo = adm.Cargo,
+                        IdUsuario = adm.IdUsuario,
+                        Usuario = new Usuario 
+                        { 
+                            Nome = adm.Usuario!.Nome,
+                            Email = adm.Usuario!.Email,
+                            IdTipoUsuario = adm.Usuario!.IdTipoUsuario
+                        }
+                    }
+                    
+                    ).FirstOrDefault(adm => adm.Id == id)!;
 
                 if (administradorBuscado == null)
                 {

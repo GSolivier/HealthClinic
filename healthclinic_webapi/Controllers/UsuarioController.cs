@@ -40,6 +40,7 @@ namespace healthclinic_webapi.Controllers
         /// <param name="usuarioPaciente">DTO para cadastrar um usuário do tipo paciente</param>
         /// <returns></returns>
         [HttpPost("Paciente")]
+        //[Authorize(Roles = "Administrador")]
         public IActionResult PostPaciente(UsuarioPacienteDTO usuarioPaciente)
         {
             try
@@ -83,6 +84,7 @@ namespace healthclinic_webapi.Controllers
         /// <param name="usuarioAdm">DTO o usuário do tipo administrador</param>
         /// <returns>Retorna um StatusCode(201) - Created</returns>
         [HttpPost("Administrador")]
+        //[Authorize(Roles = "Administrador")]
         public IActionResult PostAdm(UsuarioAdmDTO usuarioAdm)
         {
             try
@@ -124,6 +126,7 @@ namespace healthclinic_webapi.Controllers
         /// <param name="usuarioMedico">DTO do usuário do tipo médico</param>
         /// <returns>Retorna um StatusCode(201) - Created</returns>
         [HttpPost("Medico")]
+        //[Authorize(Roles = "Administrador")]
         public IActionResult PostMedico(UsuarioMedicoDTO usuarioMedico)
         {
             try
@@ -168,6 +171,7 @@ namespace healthclinic_webapi.Controllers
         /// <param name="id">ID do usuário que será buscado</param>
         /// <returns>Retorna um StatusCode(200) - Ok com o objeto encontrado</returns>
         [HttpGet("{id}")]
+        //[Authorize(Roles = "Administrador")]
         public IActionResult GetById(Guid id)
         {
             try

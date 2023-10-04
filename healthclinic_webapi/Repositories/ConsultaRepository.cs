@@ -29,7 +29,6 @@ namespace healthclinic_webapi.Repositories
         {
             try
             {
-                consulta.Id = Guid.NewGuid();
 
                 _clinicContext.Consulta.Add(consulta);
 

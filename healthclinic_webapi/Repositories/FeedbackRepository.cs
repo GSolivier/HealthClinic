@@ -84,6 +84,33 @@ namespace healthclinic_webapi.Repositories
             }
         }
 
+        /// <summary>
+        /// Método para atualizar um feedback nulo
+        /// </summary>
+        /// <param name="idConsulta">ID da consulta daquele feedback</param>
+        /// <param name="feedback">Comentario do paciente sobre a consulta</param>
+        public void Atualizar(Guid idConsulta, string feedback)
+        {
+            try
+            {
+                Feedback feedbackEncontrado = BuscarPorIdConsulta(idConsulta);
 
+                if (feedbackEncontrado.Descricao != null)
+                {
+                    throw new Exception("O feedback ja foi enviado e não pode ser alterado");
+                }
+
+                feedbackEncontrado.Descricao = feedback;
+
+                _clinicContext.Feedback.Update(feedbackEncontrado);
+
+                _clinicContext.SaveChanges();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }
